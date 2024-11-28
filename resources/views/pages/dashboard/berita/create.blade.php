@@ -5,10 +5,25 @@
         </h2>
     </x-slot>
 
+    <x-slot name="script">
+        <!-- CKEditor CDN -->
+        <script src="{{ asset('js/ckeditor/build/ckeditor.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                ClassicEditor
+                    .create(document.querySelector('#content'))
+                    .catch(error => {
+                        console.error('CKEditor Error:', error);
+                    });
+            });
+        </script>
+    </x-slot>
+    
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
-                <form method="POST" action="{{ route('dashboard.berita.store') }}">
+                <form method="POST" action="{{ route('dashboard.berita.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-4">
                         <label for="title" class="block text-sm font-medium text-gray-700">Judul</label>
@@ -25,9 +40,14 @@
                         <input type="date" name="date" id="date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
                     </div>
 
+                    <div class="mt-4">
+                        <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+                        <textarea name="content" id="content" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                    </div>                    
+
                     <div class="mb-4">
-                        <label for="content" class="block text-sm font-medium text-gray-700">Konten</label>
-                        <textarea name="content" id="content" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required></textarea>
+                        <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                        <input type="file" name="image" id="image" accept="image/*" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
                     </div>
 
                     <div class="flex justify-end">
