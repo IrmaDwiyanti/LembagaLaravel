@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Storage;
 class BeritaController extends Controller
 {
     public function index() {
-        $berita = Berita::where('user_id', Auth::id())->get();
+        $berita = Berita::where('user_id', Auth::id())->paginate(9); 
         return view('pages.dashboard.berita.index', compact('berita'));
     }
+    
 
     public function create() {
         return view('pages.dashboard.berita.create');

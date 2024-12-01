@@ -5,20 +5,27 @@
         </h2>
     </x-slot>
 
+    
     <x-slot name="script">
-        <!-- CKEditor CDN -->
-        <script src="{{ asset('js/ckeditor/build/ckeditor.js') }}"></script>
+        <!-- Tambahkan CKEditor Script -->
+        <script src="{{ asset('js/ckeditor5/ckeditor5.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('js/ckeditor5/ckeditor5.css') }}">
+    
         <script>
             document.addEventListener('DOMContentLoaded', function () {
+                console.log('Script CKEditor dijalankan');
                 ClassicEditor
-                    .create(document.querySelector('#content'))
+                    .create(document.querySelector('#editor'))
+                    .then(editor => {
+                        console.log('Editor CKEditor berhasil diinisialisasi:', editor);
+                    })
                     .catch(error => {
-                        console.error('CKEditor Error:', error);
+                        console.error('Terjadi kesalahan saat inisialisasi CKEditor:', error);
                     });
             });
         </script>
     </x-slot>
-    
+            
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -42,7 +49,7 @@
 
                     <div class="mt-4">
                         <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                        <textarea name="content" id="content" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                        <textarea name="content" id="editor" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
                     </div>                    
 
                     <div class="mb-4">
@@ -63,3 +70,4 @@
         </div>
     </div>
 </x-app-layout>
+

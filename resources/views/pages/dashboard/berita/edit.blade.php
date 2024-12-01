@@ -6,19 +6,24 @@
     </x-slot>
 
     <x-slot name="script">
-        <!-- CKEditor CDN -->
-        <script src="{{ asset('js/ckeditor/build/ckeditor.js') }}"></script>
+        <!-- Menyertakan CKEditor CDN -->
+        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+    
+        <!-- Inisialisasi CKEditor -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
+                // Inisialisasi CKEditor pada textarea dengan id 'content'
                 ClassicEditor
                     .create(document.querySelector('#content'))
+                    .then(editor => {
+                        console.log('Editor initialized', editor);
+                    })
                     .catch(error => {
-                        console.error('CKEditor Error:', error);
+                        console.error('Error initializing CKEditor:', error);
                     });
             });
         </script>
-    </x-slot>
-    
+    </x-slot>    
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -43,20 +48,19 @@
 
                     <div class="mt-4">
                         <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                        <textarea name="content" id="content" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('content', $berita->content) }}</textarea>
+                        <textarea name="content" id="content" class="editor mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('content', $berita->content) }}</textarea>
                     </div> 
                     
                     <div class="mb-4">
                         <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
                         <input type="file" name="image" id="image" accept="image/*" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         @if($berita->image)
-        <div class="mt-2">
-            <img src="{{ asset('storage/' . $berita->image) }}" alt="Preview Image" class="w-32 h-32 object-cover rounded">
-        </div>
-    @else
-        <p class="mt-2 text-sm text-gray-500">Tidak ada gambar.</p>
-    @endif
-                    
+                            <div class="mt-2">
+                                <img src="{{ asset('storage/' . $berita->image) }}" alt="Preview Image" class="w-32 h-32 object-cover rounded">
+                            </div>
+                        @else
+                            <p class="mt-2 text-sm text-gray-500">Tidak ada gambar.</p>
+                        @endif
                     </div>
 
                     <div class="flex justify-end">

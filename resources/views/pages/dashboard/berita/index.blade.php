@@ -4,27 +4,9 @@
             {{ __('Documents') }}
         </h2>
     </x-slot>
-
+    
     <x-slot name="script">
-        <!-- Menyertakan CKEditor CDN -->
-        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
-        
-        <!-- Inisialisasi CKEditor -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Inisialisasi CKEditor pada semua textarea dengan class 'editor'
-                document.querySelectorAll('.editor').forEach(function (textarea) {
-                    ClassicEditor
-                        .create(textarea)
-                        .then(editor => {
-                            // Jika diperlukan, bisa tambahkan logika tambahan di sini
-                        })
-                        .catch(error => {
-                            console.error('Error initializing CKEditor:', error);
-                        });
-                });
-            });
-        </script>
+        <!-- Script JavaScript bisa ditambahkan jika ada -->
     </x-slot>
 
     <div class="py-12">
@@ -84,9 +66,11 @@
                                 </tr>
                             @endforelse
                         </tbody>
-                        
                     </table>
                 </div>
+            </div>
+            <div class="mt-4">
+                {{ $berita->links() }}
             </div>
         </div>
     </div>
