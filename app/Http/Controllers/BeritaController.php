@@ -11,11 +11,16 @@ use Illuminate\Support\Facades\Storage;
 class BeritaController extends Controller
 {
     public function index() {
-        $berita = Berita::where('user_id', Auth::id())->paginate(9); 
+        // Jika pengguna adalah admin, ambil semua berita
+        if (Auth::user()->roles == 'admin') {
+            $berita = Berita::paginate(5); // Admin melihat semua berita
+        } else {
+            $berita = Berita::where('user_id', Auth::id())->paginate(5); // Author hanya melihat berita miliknya
+        }
+        //$berita_terbaru = Berita::orderBy('date', 'desc')->take(4)->get();
         return view('pages.dashboard.berita.index', compact('berita'));
     }
     
-
     public function create() {
         return view('pages.dashboard.berita.create');
     }
@@ -41,68 +46,92 @@ class BeritaController extends Controller
         return redirect()->route('dashboard.berita.index')->with('success', 'Berita berhasil dihapus.');
     }
     
+    public function show($id){
+    $berita = Berita::findOrFail($id); 
+    return view('pages.dashboard.berita.detail', compact('berita'));
+    }
+
+    //Menamilkan berita ke halaman home
+    public function home()
+    {
+    $berita_terbaru = Berita::where('status', '1') 
+        ->orderBy('date', 'desc') 
+        ->take(4) 
+        ->get();
+
+    return view('home', compact('berita_terbaru'));
+    }
+
+    public function slideBerita()
+    {
+    $berita_terbaru = Berita::where('status', '1') 
+        ->orderBy('date', 'desc') 
+        ->paginate(4);
+
+    return view('beritaslide', compact('berita_terbaru'));
+    }
 
 
     // Menyimpan berita baru
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'author' => 'required',
-            'date' => 'required|date',
-            'content' => 'required',
-        ]);
+    public function store(Request $request){
+    $request->validate([
+        'title' => 'required',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'author' => 'required',
+        'date' => 'required|date',
+        'content' => 'required',
+        'status' => 'required|in:"0","1"',
+ 
+    ]);
+    $status = $request->input('status', '0');
+    $path = $request->file('image')->store('images', 'public');
 
-        $path = $request->file('image')->store('images', 'public');
+    Berita::create([
+        'title' => $request->title,
+        'author' => $request->author,
+        'date' => $request->date,
+        'content' => $request->content,
+        'image' => $path,
+        'status' => $status,  
+        'user_id' => Auth::id(),
+    ]);
 
-        Berita::create([
-            'title' => $request->title,
-            'author' => $request->author,
-            'date' => $request->date,
-            'content' => $request->content,
-            'image' => $path,
-            'user_id' => Auth::id(),
-        ]);
-
-        return redirect()->route('dashboard.berita.index')->with('success', 'Berita berhasil ditambahkan.');
+    return redirect()->route('dashboard.berita.index')->with('success', 'Berita berhasil ditambahkan.');
     }
 
     //Update
-    public function update(Request $request, $id)
-{
-    $berita = Berita::findOrFail($id);
+    public function update(Request $request, $id) {
+        $berita = Berita::findOrFail($id);
 
-    // Validasi input
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'author' => 'required|string|max:255',
-        'date' => 'required|date',
-        'content' => 'required|string',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-    ]);
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'date' => 'required|date',
+            'content' => 'required|string',
+            'status' => 'required|in:"0","1"',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
-    // Update data berita
-    $berita->title = $request->title;
-    $berita->author = $request->author;
-    $berita->date = $request->date;
-    $berita->content = $request->content;
+        $status = $request->input('status', '0');
 
-    // Jika ada gambar baru, simpan dan update
-    if ($request->hasFile('image')) {
-        // Hapus gambar lama jika ada
-        if ($berita->image && Storage::exists('public/' . $berita->image)) {
-            Storage::delete('public/' . $berita->image);
+
+        $berita->title = $request->title;
+        $berita->author = $request->author;
+        $berita->date = $request->date;
+        $berita->content = $request->content;
+        $berita->status = $request->status;
+        
+
+        if ($request->hasFile('image')) {
+            if ($berita->image && Storage::exists('public/' . $berita->image)) {
+                Storage::delete('public/' . $berita->image);
+            }
+
+            $imagePath = $request->file('image')->store('images', 'public');
+            $berita->image = $imagePath;
         }
+        $berita->save();
 
-        // Simpan gambar baru di folder `images` dalam disk `public`
-        $imagePath = $request->file('image')->store('images', 'public');
-        $berita->image = $imagePath; // Simpan path relatif file
+        return redirect()->route('dashboard.berita.index')->with('success', 'Berita berhasil diperbarui.');
     }
-
-    // Simpan perubahan
-    $berita->save();
-
-    return redirect()->route('dashboard.berita.index')->with('success', 'Berita berhasil diperbarui.');
-}
 }

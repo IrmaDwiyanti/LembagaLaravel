@@ -63,11 +63,19 @@
                         @endif
                     </div>
 
+                    <div class="mb-4">
+                        <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                        <select name="status" id="status" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="0" {{ old('status', $berita->status) == '0' ? 'selected' : '' }}>Draft</option>
+                            <option value="1" {{ old('status', $berita->status) == '1' ? 'selected' : '' }}>Published</option>
+                        </select>
+                    </div>                    
+
                     <div class="flex justify-end">
-                        <a href="{{ route('dashboard.berita.index') }}" class="bg-gray-500 text-white py-2 px-4 rounded shadow-sm hover:bg-gray-700">
+                        <a href="{{ route('dashboard.berita.index') }}" class="bg-gray-500 text-white py-2 px-4 rounded shadow-sm hover:bg-gray-700 text-xs">
                             Batal
                         </a>
-                        <button type="submit" class="ml-3 bg-blue-500 text-white py-2 px-4 rounded shadow-sm hover:bg-blue-700">
+                        <button type="submit" class="ml-3 bg-blue-500 text-white py-2 px-4 rounded shadow-sm hover:bg-blue-700 text-xs">
                             Simpan
                         </button>
                     </div>

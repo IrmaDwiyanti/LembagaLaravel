@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('title');
             $table->string('author');
             $table->date('date');
-            $table->string('content');
+            $table->longText('content'); 
+            $table->string('status')->default('0'); 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

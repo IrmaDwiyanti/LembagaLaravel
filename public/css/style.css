@@ -1036,6 +1036,9 @@ a:hover {
 .news-itembs img {
     width: 100%;
     height: auto;
+    max-width: 300px;   
+    max-height: 150px;  
+    object-fit: cover; 
 }
 .news-contentbs {
     padding: 15px;

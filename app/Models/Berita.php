@@ -15,10 +15,20 @@ class Berita extends Model
         'author',
         'date',
         'content',
-        'user_id'
+        'user_id',
+        'status',  
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    protected $casts = [
+        'status' => 'string', 
+    ];
+
+    protected $attributes = [
+        'status' => '0', 
+    ];
+    
 }

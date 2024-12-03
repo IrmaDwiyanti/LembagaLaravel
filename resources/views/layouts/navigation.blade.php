@@ -18,7 +18,7 @@
 
 
                     @if (Auth::user()->roles == 'admin')
-                    <x-nav-link href=""  :active="false">
+                    <x-nav-link href="{{route('dashboard.user.index')}}"  :active="request()->routeIs('dashboard.user.index')">
                         {{ __('Users') }}
                         </x-nav-link>
 
@@ -36,11 +36,11 @@
                             {{ __('My Documents') }}
                         </x-nav-link>
 
-                        <x-nav-link href="#" :active="false">
+                        <x-nav-link href="{{route('dashboard.berita.index')}}" :active="false">
                             {{ __('Berita') }}
                         </x-nav-link>
                     @endif
-                </div>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

@@ -42,7 +42,34 @@
   </div>
 
   <!--content-->
+  <!-- Berita Terbaru -->
 <div class="containerbs">
+  <div class="judulbs">Berita-berita</div>
+  <div class="news-gridbs">
+      @foreach ($berita_terbaru as $item)
+          <div class="news-itembs">
+              <a href="{{ url('contentberita/' . $item->id) }}">
+                  <img alt="Image" height="200" src="{{ asset('storage/' . $item->image) }}" width="300"/>
+                  <div class="news-contentbs">
+                      <div class="news-titlebs">
+                          {{ $item->title ?? 'Judul tidak tersedia' }}
+                      </div>
+                      <div class="news-metabs">
+                          {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}
+                      </div>
+                  </div>
+              </a>
+          </div>
+      @endforeach
+  </div>
+
+  <!-- Pagination -->
+  <div class="paginationbs">
+      {{ $berita_terbaru->links('pagination::bootstrap-5') }}
+  </div>
+</div>
+
+<!--<div class="containerbs">
     <div class="judulbs">Berita-berita</div>
     <div class="news-gridbs">
       <div class="news-itembs">
@@ -115,7 +142,7 @@
     <a href="#">11</a>
     <a href="#">&gt;</a>
    </div>
-  </div>
+  </div>-->
            
   <!--footer-->
   <footer class="footer">

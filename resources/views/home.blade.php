@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    
+    <link rel="icon" href="images/logoset.png" type="image/png">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -125,106 +127,73 @@
  </div>
 <!--end pusat-->
   
-<!--berita-->
+<!-- Berita -->
 <div class="containernews">
+  <!-- Video Section -->
   <div class="sectionnews">
-   <h2>Campus Video</h2>
-   <hr/>
-   <div class="video-container">
+    <h2>Campus Video</h2>
+    <hr />
     <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/yprwfSH4h9c?si=u7luHMHU-PykvPo0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-   </div>
-   </div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/yprwfSH4h9c?si=u7luHMHU-PykvPo0" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+      </iframe>
+    </div>
   </div>
+
+  <!-- Berita Terbaru -->
   <div class="sectionnews">
-   <h2>Berita Terbaru</h2>
-   <hr/>
-   <a href="contentberita">
-    <div class="news-item">
-    <img alt="Image UIN" height="80" src="/images/berita1.png"/>
-    <div>
-     <div class="date">
-      16/10/2024
-     </div>
-     <div class="title">
-      Diseminasi Isu-isu Gender melalui Konferensi PSGA ke-3 dan Peran Strategis PSGA di PTKI     </div>
-    </div>
-   </div>
-   </a>
-
-   <a href="contentberita">
-    <div class="news-item">
-    <img alt="UIN" height="80" src="/images/berita2.png"/>
-    <div>
-     <div class="date">
-      17/09/2024
-     </div>
-     <div class="title">
-      Workshop Kurikulum Berperspektif Gender PSGA LP2M UIN SGD Bandung</div>
-    </div>
-   </div>
-   </a>
-   
-   <a href="contentberita">
-     <div class="news-item">
-    <img alt="UIN" height="80" src="/images/berita3.png" />
-    <div>
-     <div class="date">
-      06/09/2024
-     </div>
-     <div class="title">
-      Desa Cikuya - Menjaga Tradisi, Membangun Masa Depan</div>
-    </div>
-   </div>
-   </a>
-  
-   <a href="contentberita">
-    <div class="news-item">
-    <img alt="Image of UIN campus" height="80" src="/images/berita4.png" />
-    <div>
-     <div class="date">
-      16/08/2024
-     </div>
-     <div class="title">
-      Sosialisasi ke masyarakat, Peserta KKN-MB Desa Babakanmulya Gelar Kegiatan Rembuk Warga</div>
-    </div>
-   </div>
-   </a>
-   
-   <a class="read-more" href="beritaslide">
-    Berita Selengkapnya
-    <i class="fas fa-arrow-right">
-    </i>
-   </a>
+    <h2>Berita Terbaru</h2>
+    <hr />
+    @foreach ($berita_terbaru as $item)
+      <a href="{{ url('contentberita/' . $item->id) }}">
+        <div class="news-item">
+          @if ($item->image)
+            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" height="80" />
+          @else
+            <img src="{{ asset('images/default.jpg') }}" alt="Default Image" height="80" />
+          @endif
+          <div>
+            <div class="date">
+              {{ $item->date ? \Carbon\Carbon::parse($item->date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}
+            </div>
+            <div class="title">{{ $item->title ?? 'Judul tidak tersedia' }}</div>
+          </div>
+        </div>
+      </a>
+    @endforeach
+    <a class="read-more" href="{{ url('beritaslide') }}">
+      Berita Selengkapnya
+      <i class="fas fa-arrow-right"></i>
+    </a>
   </div>
- </div>
+</div>
 
- <!--footer-->
- <footer class="footer">
-
+<!-- Footer -->
+<footer class="footer">
   <div class="footer-left">
-      <img src="images/logo.png" alt="Logo UIN" >
+    <img src="images/logo.png" alt="Logo UIN" />
   </div>
-
   <div class="footer-center">
-      <p>Jl. A.H. Nasution No. 105, <br> Cibiru, Bandung 40614</p>
-      <p class="footer-copyright">&copy; 2024 - UIN SGD Bandung</p>
+    <p>Jl. A.H. Nasution No. 105, <br> Cibiru, Bandung 40614</p>
+    <p class="footer-copyright">&copy; 2024 - UIN SGD Bandung</p>
   </div>
-
   <div class="footer-right">
-      <p class="footer-about">Sosial Media</p>
-      <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-      </div>
-      <p>Email: <a>lp2m@uinsgd.ac.id</a></p>
-      <p>(022)7800525</p>
+    <p class="footer-about">Sosial Media</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>Email: <a href="mailto:lp2m@uinsgd.ac.id">lp2m@uinsgd.ac.id</a></p>
+    <p>(022) 7800525</p>
   </div>
 </footer>
 
 <script src="{{ asset('js/script.js') }}"></script>
-
 </body>
 </html>
