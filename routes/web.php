@@ -72,14 +72,16 @@ Route::get('/dashboard', function () {
 Route::get('/home', [BeritaController::class, 'home'])->name('home');
 Route::get('/beritaslide', [BeritaController::class, 'slideBerita']);
 
+Route::get('/contentberita/{id}', [BeritaController::class, 'contentberita'])->name('contentberita');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     //tampil ke view
-    Route::get('/home', [BeritaController::class, 'home'])->name('home');
-    Route::get('/beritaslide', [BeritaController::class, 'slideBerita']);
+    // Route::get('/home', [BeritaController::class, 'home'])->name('home');
+    // Route::get('/beritaslide', [BeritaController::class, 'slideBerita']);
 
 
     //berita

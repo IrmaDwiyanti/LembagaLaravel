@@ -11,7 +11,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
     
-    <link href="css/style.css" rel="stylesheet"/>
+    <link rel="icon" href="images/logoset.png" type="image/png">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    {{-- <link rel="stylesheet" href="css/style.css"> --}}
 </head>
 <body>
     <!--header-->
@@ -41,84 +44,71 @@
         </div>
     </div>
 
+    <!-- Headline Section -->
 <!-- Headline Section -->
 <div class="py-4">
     <div class="p-4" style="background-color: rgba(47, 170, 47, 0.32);">
         <div class="col-6 headline">
-            <h4>Diseminasi Isu-isu Gender melalui Konferensi PSGA ke-3 dan Peran Strategis PSGA di PTKI</h4>
-            <span>Minggu, 30/10/2021  16:00  WIB</span>
+            <h4>{{ $berita->title ?? 'Judul tidak tersedia' }}</h4>
+            <span>
+                <!-- Menambahkan Author sebelum tanggal -->
+                <strong>{{ $berita->author ?? 'Penulis tidak tersedia' }}</strong> | 
+                {{ $berita->date ? \Carbon\Carbon::parse($berita->date)->format('l, d/m/Y H:i') : 'Tanggal tidak tersedia' }}
+            </span>
         </div>
     </div>
 </div>
+
 
 <!-- Main Content Wrapper -->
 <div class="content-wrappercb">
     <!-- Main Content -->
     <div class="main-contentcb">
-        <img src="/images/berita1.png" alt="berita" width="400" height="200"/>
+        <img 
+                src="{{ $berita->image ? asset('storage/' . $berita->image) : asset('images/default.jpg') }}" 
+                alt="{{ $berita->title ?? 'Gambar berita' }}" 
+                width="400" 
+                height="200" 
+            />
         <div class="mt-5">
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-            sunt in culpa qui officia deserunt mollit anim id est laborum. Ut etiam sit amet nisl purus in. 
-            Odio eu feugiat pretium nibh ipsum consequat nisl vel. Aliquet lectus proin nibh nisl condimentum 
-            id venenatis a. Eu consequat ac felis donec et odio. Lorem sed risus ultricies tristique nulla 
-            aliquet enim. Id interdum velit laoreet id donec ultrices tincidunt arcu non. Facilisi nullam 
-            vehicula ipsum a arcu cursus vitae congue mauris. Sit amet tellus cras adipiscing enim eu turpis 
-            egestas pretium. Congue quisque egestas diam in arcu cursus euismod quis.
-            </p>
-        </div>
+                <p>
+                    {!! $berita->content ?? 'Konten tidak tersedia' !!}
+                </p>
+            </div>
     </div>
-
-    <!-- Sidebar -->
+    
+    <!-- Sidebar Berita Terbaru -->
     <div class="sidebarcb">
         <h4>Berita Terbaru</h4>
-        <div class="cbnews-item">
-            <img src="/images/berita1.png" alt="Placeholder image of UIN Bandung campus" width="100" height="100"/>
-            <a href="contentberita">
-            <div>
-                <p class="fw-bold">UIN Bandung Mengadakan Seminar Internasional</p>
-                <p>Bandung - <span class="time">16/10/2024</span></p>
+        @foreach ($berita_terbaru as $item)
+            <div class="cbnews-item">
+                @if ($item->image)
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" height="80" />
+                @else
+                    <img src="{{ asset('images/default.jpg') }}" alt="Default Image" height="80" />
+                @endif
+                <a href="{{ route('contentberita', $item->id) }}">
+                    <div>
+                        <p class="title">{{ $item->title ?? 'Judul tidak tersedia' }}</p>
+                        <div class="date">
+                            <strong>{{ $item->author ?? 'Penulis tidak tersedia' }}</strong> | 
+                            {{ $item->date ? \Carbon\Carbon::parse($item->date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}
+                        </div>
+                    </div>
+                </a>
             </div>
-        </a>
-        </div>
-        <div class="cbnews-item">
-            <img src="/images/berita2.png" alt="Placeholder image of UIN Bandung campus"/>
-            <a href="contentberita">
-            <div>
-                <p class="fw-bold">UIN Bandung Meraih Penghargaan Kampus Terbaik</p>
-                <p>Bandung - <span class="time">16/10/2024</span></p>
-            </div>
-        </a>
-        </div>
-        <div class="cbnews-item">
-            <img src="/images/berita2.png" alt="Placeholder image of UIN Bandung campus"/>
-            <a href="contentberita">
-            <div>
-                <p class="fw-bold">UIN Bandung Meraih Penghargaan Kampus Terbaik</p>
-                <p>Bandung - <span class="time">16/10/2024</span></p>
-            </div>
-        </a>
-        </div>
-        <div class="cbnews-item">
-            <img src="/images/berita4.png" alt="Placeholder image of UIN Bandung campus"/>
-            <a href="contentberita">
-            <div>
-                <p class="fw-bold">UIN Bandung Buka Program Studi Baru</p>
-                <p>Bandung - <span class="time">16/10/2024</span></p>
-            </div>     
-            </a>
-        </div>
-        <a href="beritaslide">berita lainnya</a>
+        @endforeach
+        <a class="read-more" href="{{ url('beritaslide') }}">
+            Berita Selengkapnya
+            <i class="fas fa-arrow-right"></i>
+          </a>
     </div>
 </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-left">
-            <img src="images/logo.png" alt="Logo UIN"/>
+            <img src="{{ asset('images/logo.png') }}" alt="Logo UIN"/>
         </div>
         <div class="footer-center">
             <p>Jl. A.H. Nasution No. 105, <br> Cibiru, Bandung 40614</p>

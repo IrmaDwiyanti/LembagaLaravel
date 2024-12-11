@@ -516,8 +516,7 @@ body {
 }
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 .grid-item {
@@ -887,9 +886,9 @@ body {
 /*===========================STYLE CONTENT BERITA====================*/
 /*-------------------------------BERITA------------------------------*/
 /*content*/
-.col-6 {
-    color: black;
-}
+
+/*content*/
+/* Content Layout */
 .content-wrappercb {
     max-width: 1200px;
     margin: 0 auto;
@@ -901,6 +900,7 @@ body {
 
 /* Main Content Styles */
 .main-contentcb {
+    height: max-content;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -912,6 +912,8 @@ body {
     height: auto;
     object-fit: cover;
     border-radius: 8px;
+    max-width: 800px;
+    max-height: 400px;
 }
 
 .main-contentcb p {
@@ -951,57 +953,56 @@ body {
 }
 
 .cbnews-item img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 4px;
 }
 
-.cbnews-item div {
-    flex: 1;
-}
-
 .cbnews-item p {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
     color: #333;
+    font-size: 13px;
 }
 
-.cbnews-item .fw-bold {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.cbnews-item .time {
+.cbnews-item .date {
     color: #666;
     font-size: 12px;
+    transition: color 0.3s ease; 
 }
-
 .cbnews-item a {
-    text-decoration: none;
-    transition: none;
-}
-.cbnews-item a:hover {
-    color: inherit; 
-    text-decoration: underline; 
-    transform: none; 
-}
-
-.sidebar a {
-    color: #2faa2f;  
-    font-weight: bold;  
+    color: #333; 
     text-decoration: none;
     font-size: 14px; 
-    margin-top: 10px;  
-    display: inline-block;  
-    transition: color 0.3s ease, transform 0.3s ease;  
+    display: inline-block;
+    transition: color 0.3s;
 }
 
-a:hover {
-    color: #4caf50;  
+.cbnews-item a:hover {
+    color: #2faa2f;  
     text-decoration: underline;  
-    transform: scale(1.1); 
+}
+
+/* Headline Section */
+.headline {
+    padding: 20px;
+    width: 100%; 
+    max-width: 100%; 
+    text-align: center;
+}
+
+.headline h4 {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    white-space: normal; 
+    word-wrap: break-word; 
+    word-break: break-word; 
+    text-align: center; 
+}
+
+.headline span {
+    color: #666;
+    font-size: 14px;
 }
 /*----------------------------END BERITA-----------------------------*/
 
@@ -1032,6 +1033,9 @@ a:hover {
     overflow: hidden;
     width: calc(25% - 20px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex; 
+    flex-direction: column; 
+    height: 320px; 
 }
 .news-itembs img {
     width: 100%;
@@ -1041,19 +1045,25 @@ a:hover {
     object-fit: cover; 
 }
 .news-contentbs {
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+    justify-content: space-between; 
     padding: 15px;
+    height: 170px; 
 }
 .news-titlebs {
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     margin: 10px 0;
     color: #000;
-    line-height: 2;
+    line-height: 1.5; 
 }
 .news-metabs {
     font-size: 12px;
     color: #888;
-    margin-bottom: 10px;
+    margin-top: auto; 
+    text-align: right; 
 }
 .paginationbs {
     text-align: center;
@@ -1090,6 +1100,8 @@ a:hover {
     text-decoration: none;
 }
 /*------------------------------END BERITA SLIDE-----------------------*/
+
+
 @media (max-width: 1200px) {
     .header-contentukm h1 {
         font-size: 12px;
@@ -1413,6 +1425,36 @@ a:hover {
 
     .descriptionpusatps {
         padding: 15px;
+    }
+    
+    /*content berita*/
+    .content-wrappercb {
+        grid-template-columns: 1fr;
+    }
+    
+    .cbnews-item {
+        flex-direction: column;
+    }
+    
+    .cbnews-item img {
+        width: 100%;
+        height: 200px;
+    }
+    /*beita slide*/
+    .news-itembs {
+        width: calc(50% - 20px); 
+    }
+    .news-itembs img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .judulbs {
+        font-size: 24px;
+    }
+
+    .news-titlebs{
+        font-size:10px;
     }
     
 }
@@ -1760,5 +1802,33 @@ a:hover {
 
     .descriptionpuslitpen {
         padding: 10px;
+    }
+
+    /*content berita*/
+    .judul {
+        font-size: 16px; 
+    }
+
+    /*berita slide */
+    .news-gridbs{
+        width: 100%;
+        max-width: 300px; 
+        margin: 0 auto; 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; 
+        gap: 20px; 
+    }
+    .news-itembs {
+        width: 100%; 
+    }
+    .judulbs {
+        font-size: 20px;
+    }
+    .news-titlebs {
+        font-size: 14px;
+    }
+    .news-metabs {
+        font-size: 10px;
     }
 }

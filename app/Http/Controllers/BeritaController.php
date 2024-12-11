@@ -51,27 +51,6 @@ class BeritaController extends Controller
     return view('pages.dashboard.berita.detail', compact('berita'));
     }
 
-    //Menamilkan berita ke halaman home
-    public function home()
-    {
-    $berita_terbaru = Berita::where('status', '1') 
-        ->orderBy('date', 'desc') 
-        ->take(4) 
-        ->get();
-
-    return view('home', compact('berita_terbaru'));
-    }
-
-    public function slideBerita()
-    {
-    $berita_terbaru = Berita::where('status', '1') 
-        ->orderBy('date', 'desc') 
-        ->paginate(4);
-
-    return view('beritaslide', compact('berita_terbaru'));
-    }
-
-
     // Menyimpan berita baru
     public function store(Request $request){
     $request->validate([
@@ -134,4 +113,45 @@ class BeritaController extends Controller
 
         return redirect()->route('dashboard.berita.index')->with('success', 'Berita berhasil diperbarui.');
     }
+
+    //Menamilkan berita ke halaman home
+    public function home()
+    {
+    $berita_terbaru = Berita::where('status', '1') 
+        ->orderBy('date', 'desc') 
+        ->take(4) 
+        ->get();
+
+    return view('home', compact('berita_terbaru'));
+    }
+
+    public function slideBerita()
+    {
+    $berita_terbaru = Berita::where('status', '1') 
+        ->orderBy('date', 'desc') 
+        ->paginate(4);
+
+    return view('beritaslide', compact('berita_terbaru'));
+    }
+
+    public function contentberita($id)
+    {
+        // Mencari berita berdasarkan ID
+        $berita = Berita::find($id);
+    
+        // Jika berita tidak ditemukan, redirect ke halaman lain atau tampilkan pesan error
+        if (!$berita) {
+            return redirect()->route('home')->with('error', 'Berita tidak ditemukan.');
+        }
+    
+        // Mengambil 4 berita terbaru
+        $berita_terbaru = Berita::where('status', '1')
+            ->orderBy('date', 'desc')
+            ->take(4)
+            ->get();
+    
+        // Return view untuk konten berita dengan data berita dan berita terbaru
+        return view('contentberita', compact('berita', 'berita_terbaru'));
+    }
+        
 }

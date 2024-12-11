@@ -13,6 +13,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
     
+    <link rel="icon" href="images/logoset.png" type="image/png">
+
     <link rel="stylesheet" href="css/style.css">
     
 </head>
@@ -66,101 +68,69 @@
         </div>
         <div class="grid-container">
          <div class="grid-item">
-          <img alt="Library building" src="https://storage.googleapis.com/a1aa/image/6rLXQ3TQcfQNPqbRBazc2NDUx9qV9qj7JfEHgk7mHZ15DSoTA.jpg"/>
-          <p>
-           Pusat Perpustakaan
-          </p>
+            <img alt="Library building" src="{{ asset('images/Perpus.jpg') }}"/>
+            <p>Pusat Perpustakaan</p>
          </div>
          <div class="grid-item">
-          <img alt="Information and Data Center building" src="https://storage.googleapis.com/a1aa/image/Ncw25LXRlE7nApotyD0F6ce2AyGCDNl7OybhBE4SAomBCJ0JA.jpg"/>
-          <p>
-           Pusat Teknologi Informasi dan Pangkalan Data
-          </p>
+            <img alt="Information and Data Center building" src="{{ asset('images/Ptipd.jpg') }}"/>
+            <p>Pusat Teknologi Informasi dan Pangkalan Data</p>
          </div>
          <div class="grid-item">
-          <img alt="International Office building" src="https://storage.googleapis.com/a1aa/image/GF3qVEV6QIL6CNAgA4F2ixlFCQrbWX6DHQLvOfTW7safDSoTA.jpg"/>
-          <p>
-           Pusat International Office
-          </p>
+            <img alt="International Office building" src="{{ asset('images/8.jpg') }} "/>
+            <p>Pusat International Office</p>
          </div>
          <div class="grid-item">
-          <img alt="Law and Legislation Center building" src="https://storage.googleapis.com/a1aa/image/EL2fOQg02ByhX6oNzR2pgFe1snnXRfsmg344bXTuRKWAIkQnA.jpg"/>
-          <p>
-           Pusat Hukum dan Perundang-undangan
-          </p>
+            <img alt="Law and Legislation Center building" src="{{ asset('images/Kopertais.jpg') }} "/>
+            <p>Pusat Hukum dan Perundang-undangan</p>
          </div>
          <div class="grid-item">
-          <img alt="Career and Entrepreneurship Center building" src="https://storage.googleapis.com/a1aa/image/gpCuue3eCYvUE05Sk2tseBtI80HzrizSA5vqhx1AhYi5HkQnA.jpg"/>
-          <p>
-           Pusat Karir Kewirausahaan
-          </p>
+            <img alt="Career and Entrepreneurship Center building" src="{{ asset('images/Kopertais.jpg') }} "/>
+            <p>Pusat Karir Kewirausahaan</p>
          </div>
          <div class="grid-item">
-          <img alt="Business Development Center building" src="https://storage.googleapis.com/a1aa/image/yzFrBom42QY8L9oCsQ8O1Nbe8YXHadrnlyhaaeawTef8PIhOB.jpg"/>
-          <p>
-           Pusat Pengembangan Bisnis
-          </p>
+            <img alt="Business Development Center building" src="{{ asset('images/Bisnis Center.jpg') }} "/>
+            <p>Pusat Pengembangan Bisnis</p>
          </div>
          <div class="grid-item">
-          <img alt="Halal Center building" src="https://storage.googleapis.com/a1aa/image/13AwhCpeXbxmEKmfoZhhPuUA7gPKMfhXg7U0lDsDjr5FIkQnA.jpg"/>
-          <p>
-           Pusat Halal
-          </p>
+            <img alt="Halal Center building" src="{{ asset('images/Bisnis Center.jpg') }} "/>
+            <p>Pusat Halal</p>
          </div>
          <div class="grid-item">
-          <img alt="Language Development Center building" src="https://storage.googleapis.com/a1aa/image/uFhnLerrQ41MF661yvMPcl67emidQtn0z3xw5Rmakgj4DSoTA.jpg"/>
-          <p>
-           Pusat Pengembangan Bahasa
-          </p>
+            <img alt="Language Development Center building" src="{{ asset('images/Lab Halal.jpg') }} "/>
+            <p>Pusat Pengembangan Bahasa</p>
          </div>
          <div class="grid-item">
-          <img alt="New Student Admission Center building" src="https://storage.googleapis.com/a1aa/image/Oa8P1zL67va6PNsNm3qBiqgSYQf0wzUCj4cRt0fs6FI7DSoTA.jpg"/>
-          <p>
-           Pusat Penerimaan Mahasiswa Baru
-          </p>
+            <img alt="New Student Admission Center building" src="{{ asset('images/Lab Bahasa.jpg') }} "/>
+            <p>Pusat Penerimaan Mahasiswa Baru</p>
          </div>
          <div class="grid-item">
-            <img alt="Halal Center building" src="https://storage.googleapis.com/a1aa/image/13AwhCpeXbxmEKmfoZhhPuUA7gPKMfhXg7U0lDsDjr5FIkQnA.jpg"/>
-            <p>
-            Pusat Penelitian dan Penertiban (PUSLITPEN)
-            </p>
-           </div>
-           <div class="grid-item">
-            <img alt="Language Development Center building" src="https://storage.googleapis.com/a1aa/image/uFhnLerrQ41MF661yvMPcl67emidQtn0z3xw5Rmakgj4DSoTA.jpg"/>
-            <p>
-            Pusat Pengabdian Kepada Masyarakat (PKM)
-            </p>
-           </div>
-           <div class="grid-item">
-            <img alt="New Student Admission Center building" src="https://storage.googleapis.com/a1aa/image/Oa8P1zL67va6PNsNm3qBiqgSYQf0wzUCj4cRt0fs6FI7DSoTA.jpg"/>
-            <p>
-            Pusat Studi Gender dan Anak (PSGA)
-            </p>
-           </div>
-           <div class="grid-item">
-            <img alt="New Student Admission Center building" src="https://storage.googleapis.com/a1aa/image/Oa8P1zL67va6PNsNm3qBiqgSYQf0wzUCj4cRt0fs6FI7DSoTA.jpg"/>
-            <p>
-            Pusat Pengembangan Standar Mutu
-            </p>
-           </div>
-           <div class="grid-item">
-              <img alt="Halal Center building" src="https://storage.googleapis.com/a1aa/image/13AwhCpeXbxmEKmfoZhhPuUA7gPKMfhXg7U0lDsDjr5FIkQnA.jpg"/>
-              <p>
-                Pusat Audit dan Pengendalian Mutu
-              </p>
-             </div>
-             <div class="grid-item">
-              <img alt="Language Development Center building" src="https://storage.googleapis.com/a1aa/image/uFhnLerrQ41MF661yvMPcl67emidQtn0z3xw5Rmakgj4DSoTA.jpg"/>
-              <p>
-                Pusat DP-DIKTA
-            </p>
-             </div>
-             <div class="grid-item">
-              <img alt="New Student Admission Center building" src="https://storage.googleapis.com/a1aa/image/Oa8P1zL67va6PNsNm3qBiqgSYQf0wzUCj4cRt0fs6FI7DSoTA.jpg"/>
-              <p>
-                Pusat Akreditasi Internasional
-              </p>
-             </div>
+            <img alt="Pusat Penelitian dan Penertiban (PUSLITPEN)" src="{{ asset('images/Lembaga p2m.jpg') }} "/>
+            <p>Pusat Penelitian dan Penertiban (PUSLITPEN)</p>
+         </div>
+         <div class="grid-item">
+            <img alt="Language Development Center building" src="{{ asset('images/Ptipd.jpg') }} "/>
+            <p>Pusat Pengabdian Kepada Masyarakat (PKM)</p>
+         </div>
+         <div class="grid-item">
+            <img alt="New Student Admission Center building" src="{{ asset('images/Lab Bahasa.jpg') }} "/>
+            <p>Pusat Studi Gender dan Anak (PSGA)</p>
+         </div>
+         <div class="grid-item">
+            <img alt="New Student Admission Center building" src="{{ asset('images/Ppg.jpg') }} "/>
+            <p>Pusat Pengembangan Standar Mutu</p>
+         </div>
+         <div class="grid-item">
+            <img alt="Halal Center building" src="{{ asset('images/Riset perdana.jpg') }} "/>
+            <p>Pusat Audit dan Pengendalian Mutu</p>
+         </div>
+         <div class="grid-item">
+            <img alt="Language Development Center building" src="{{ asset('images/Mipa.jpg') }} "/>
+            <p>Pusat DP-DIKTA</p>
+         </div>
+         <div class="grid-item">
+            <img alt="New Student Admission Center building" src="{{ asset('images/Unit Layanan.jpg') }} "/>
+            <p>Pusat Akreditasi Internasional</p>
+         </div>
         </div>
        </div>
 
