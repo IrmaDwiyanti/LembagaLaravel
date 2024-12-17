@@ -6,41 +6,20 @@
     </x-slot>
 
     <x-slot name="script">
-        <!-- Tambahkan CKEditor Script -->
-        <script src="{{ asset('js/ckeditor5/ckeditor5.js') }}"></script>
-        <link rel="stylesheet" href="{{ asset('js/ckeditor5/ckeditor5.css') }}">
-
+        @push('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.7.0/tinymce.min.js"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                console.log('Script CKEditor dijalankan');
-                ClassicEditor
-                    .create(document.querySelector('#editor'))
-                    .then(editor => {
-                        console.log('Editor CKEditor berhasil diinisialisasi:', editor);
-                    })
-                    .catch(error => {
-                        console.error('Terjadi kesalahan saat inisialisasi CKEditor:', error);
-                    });
-
-                // Menambahkan event listener untuk preview gambar
-                const imageInput = document.getElementById('image');
-                const imagePreview = document.getElementById('image-preview');
-
-                imageInput.addEventListener('change', function (e) {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function (event) {
-                            imagePreview.src = event.target.result; 
-                            imagePreview.style.display = 'block'; 
-                        };
-                        reader.readAsDataURL(file); 
-                    } else {
-                        imagePreview.style.display = 'none'; 
-                    }
-                });
-            });
+            tinymce.init({
+            selector: 'textarea.content', 
+            height: 300, 
+            menubar: true, 
+            plugins: 'lists link image preview',
+            toolbar: 'undo redo | bold italic underline | bullist numlist | link image | preview', // Sesuaikan toolbar
+            branding: false, 
+        });
         </script>
+@endpush
+
     </x-slot>
 
     <div class="py-12">
@@ -65,7 +44,7 @@
 
                     <div class="mt-4">
                         <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                        <textarea name="content" id="editor" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                        <textarea name="content" id="editor" class="content mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
                     </div>
 
                     <div class="mb-4">
@@ -98,3 +77,5 @@
         </div>
     </div>
 </x-app-layout>
+
+

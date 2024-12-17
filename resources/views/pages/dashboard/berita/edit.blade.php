@@ -6,23 +6,19 @@
     </x-slot>
 
     <x-slot name="script">
-        <!-- Menyertakan CKEditor CDN -->
-        <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
-    
-        <!-- Inisialisasi CKEditor -->
+        @push('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.7.0/tinymce.min.js"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Inisialisasi CKEditor pada textarea dengan id 'content'
-                ClassicEditor
-                    .create(document.querySelector('#content'))
-                    .then(editor => {
-                        console.log('Editor initialized', editor);
-                    })
-                    .catch(error => {
-                        console.error('Error initializing CKEditor:', error);
-                    });
+            tinymce.init({
+                selector: 'textarea.content', 
+                height: 300, 
+                menubar: true, 
+                plugins: 'lists link image preview', 
+                toolbar: 'undo redo | bold italic underline | bullist numlist | link image | preview', // Sesuaikan toolbar
+                branding: false, 
             });
         </script>
+        @endpush
     </x-slot>    
 
     <div class="py-12">
@@ -48,7 +44,7 @@
 
                     <div class="mt-4">
                         <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                        <textarea name="content" id="content" class="editor mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('content', $berita->content) }}</textarea>
+                        <textarea name="content" id="content" class="content mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('content', $berita->content) }}</textarea>
                     </div> 
                     
                     <div class="mb-4">

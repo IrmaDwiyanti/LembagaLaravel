@@ -32,9 +32,9 @@
                     
                     @else
 
-                        <x-nav-link href="#" :active="false">
+                        {{-- <x-nav-link href="#" :active="false">
                             {{ __('My Documents') }}
-                        </x-nav-link>
+                        </x-nav-link> --}}
 
                         <x-nav-link href="{{route('dashboard.berita.index')}}" :active="false">
                             {{ __('Berita') }}
