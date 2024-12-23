@@ -12,10 +12,10 @@ class BeritaController extends Controller
 {
     public function index() {
         // Jika pengguna adalah admin, ambil semua berita
-        if (Auth::user()->roles == 'admin') {
-            $berita = Berita::paginate(5); // Admin melihat semua berita
+        if (Auth::user()->roles == '1') {
+            $berita = Berita::paginate(5); 
         } else {
-            $berita = Berita::where('user_id', Auth::id())->paginate(5); // Author hanya melihat berita miliknya
+            $berita = Berita::where('user_id', Auth::id())->paginate(5); 
         }
         //$berita_terbaru = Berita::orderBy('date', 'desc')->take(4)->get();
         return view('pages.dashboard.berita.index', compact('berita'));

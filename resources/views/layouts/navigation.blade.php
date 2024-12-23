@@ -17,7 +17,7 @@
                     </x-nav-link>
 
 
-                    @if (Auth::user()->roles == 'admin')
+                    @if (Auth::user()->roles == '1')
                     <x-nav-link href="{{route('dashboard.user.index')}}"  :active="request()->routeIs('dashboard.user.index')">
                         {{ __('Users') }}
                         </x-nav-link>
@@ -25,18 +25,8 @@
                         <x-nav-link href="{{route('dashboard.berita.index')}}" :active="request()->routeIs('dashboard.berita.index')">
                             {{ __('Berita') }}
                         </x-nav-link>
-
-                        <x-nav-link href="#" :active="false">
-                            {{ __('Permission') }}
-                        </x-nav-link>
-                    
                     @else
-
-                        {{-- <x-nav-link href="#" :active="false">
-                            {{ __('My Documents') }}
-                        </x-nav-link> --}}
-
-                        <x-nav-link href="{{route('dashboard.berita.index')}}" :active="false">
+                        <x-nav-link href="{{route('pages copy.dashboard.berita.index')}}" :active="false">
                             {{ __('Berita') }}
                         </x-nav-link>
                     @endif

@@ -77,12 +77,13 @@
 
                     <!--roles-->
                     <div class="mb-4">
-                        <label for="roles" class="block text-sm font-medium text-gray-700">Roles</label>
-                        <select name="roles" id="roles" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
-                            <option value="admin" {{ old('roles', $user->roles) == 'admin' ? 'selected' : '' }}>Admin</option>
-                            <option value="user" {{ old('roles', $user->roles) == 'user' ? 'selected' : '' }}>User</option>
+                        <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+                        <select name="roles" id="role" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="1" {{ old('roles', $user->roles ?? '') == 1 ? 'selected' : '' }}>Admin</option>
+                            <option value="2" {{ old('roles', $user->roles ?? '') == 2 ? 'selected' : '' }}>Author</option>
                         </select>
                     </div>
+                    
                                  
 
                     <!-- Buttons -->

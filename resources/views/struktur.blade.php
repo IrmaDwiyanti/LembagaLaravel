@@ -17,31 +17,8 @@
 </head>
 <body>
     <!--header-->
-    <div class="header">
-        <span>STRUKTUR ORGANISASI</span>
-        <div class="menu-bars" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="nav-links">
-            <a href="home">HOME</a>
-            <a href="pusat">PUSAT</a>
-            <a href="ukm">UKM</a>
-            <div class="dropdown">
-                <a href="#" onclick="toggleDropdown(event)">FAKULTAS & PRODI</a>
-                <div class="dropdown-content">
-                    <a href="https://fah.uinsgd.ac.id/">Adab dan Humaniora</a>
-                    <a href="https://fdk.uinsgd.ac.id/">Dakwah dan Komunikasi</a>
-                    <a href="https://febi.uinsgd.ac.id/">Ekonomi dan Bisnis Islam</a>
-                    <a href="https://fisip.uinsgd.ac.id/">Ilmu Sosial dan Ilmu Politik</a>
-                    <a href="https://psi.uinsgd.ac.id/">Psikologi</a>
-                    <a href="https://fst.uinsgd.ac.id/">Sains dan Teknologi</a>
-                    <a href="https://fsh.uinsgd.ac.id/">Syariah dan Hukum</a>
-                    <a href="https://ftk.uinsgd.ac.id/">Tarbiyah dan Keguruan</a>
-                    <a href="https://fu.uinsgd.ac.id/">Ushuluddin</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Navbar -->
+  @include('components.navbarview')
 
     <main class="contentstr">
         <h1 class="title-sectionstr">PIMPINAN</h1>

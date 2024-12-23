@@ -10,16 +10,40 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.7.0/tinymce.min.js"></script>
         <script>
             tinymce.init({
-            selector: 'textarea.content', 
-            height: 300, 
-            menubar: true, 
-            plugins: 'lists link image preview',
-            toolbar: 'undo redo | bold italic underline | bullist numlist | link image | preview', // Sesuaikan toolbar
-            branding: false, 
-        });
+                selector: 'textarea.content',
+                height: 500,
+                menubar: true,
+                plugins: 'lists link image preview imagetools',
+                toolbar: 'undo redo | bold italic underline | bullist numlist | link image | preview', 
+                branding: false,
+    
+                image_title: true,
+                automatic_uploads: true,
+                images_upload_url: '/uploadImage',  
+                file_picker_types: 'image',
+                file_picker_callback: function (callback, value, meta) {
+                    var input = document.createElement('input');
+                    input.setAttribute('type', 'file');
+                    input.setAttribute('accept', 'image/*');
+                    input.onchange = function () {
+                        var file = this.files[0];
+    
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function () {
+                            var id = 'blobid' + (new Date()).getTime();
+                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                            var base64 = reader.result.split(',')[1];
+                            var blobinfo = blobCache.create(id, file, base64);
+                            blobCache.add(blobinfo);
+                            callback(blobinfo.blobUrl(), { title: file.name });
+                        };
+                    };
+                    input.click();
+                }
+            });
         </script>
-@endpush
-
+        @endpush
     </x-slot>
 
     <div class="py-12">
@@ -48,7 +72,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                        <label for="image" class="block text-sm font-medium text-gray-700">Image Cover</label>
                         <input type="file" name="image" id="image" accept="image/*" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
 
                         <!-- Preview Gambar setelah dipilih -->

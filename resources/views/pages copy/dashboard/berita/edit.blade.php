@@ -50,7 +50,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
-                <form method="POST" action="{{ route('dashboard.berita.update', $berita->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('pages copy.dashboard.berita.update', $berita->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT') 
                     <div class="mb-4">
@@ -94,7 +94,7 @@
                     </div>                    
 
                     <div class="flex justify-end">
-                        <a href="{{ route('dashboard.berita.index') }}" class="bg-gray-500 text-white py-2 px-4 rounded shadow-sm hover:bg-gray-700 text-xs">
+                        <a href="{{ route('pages copy.dashboard.berita.index') }}" class="bg-gray-500 text-white py-2 px-4 rounded shadow-sm hover:bg-gray-700 text-xs">
                             Batal
                         </a>
                         <button type="submit" class="ml-3 bg-blue-500 text-white py-2 px-4 rounded shadow-sm hover:bg-blue-700 text-xs">

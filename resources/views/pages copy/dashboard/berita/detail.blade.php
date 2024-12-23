@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="flex justify-end">
-                    <a href="{{ route('dashboard.berita.index') }}" class="bg-gray-500 text-white py-2 px-4 rounded shadow-sm hover:bg-gray-700 text-xs">
+                    <a href="{{ route('pages copy.dashboard.berita.index') }}" class="bg-gray-500 text-white py-2 px-4 rounded shadow-sm hover:bg-gray-700 text-xs">
                         Kembali
                     </a>
                 </div>

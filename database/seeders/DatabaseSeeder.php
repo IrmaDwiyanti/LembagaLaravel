@@ -16,15 +16,15 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
-            'roles' => 'admin',
-            'password' => bcrypt('12345678'), // Pastikan menggunakan bcrypt untuk hashing password
+            'roles' => 1, // 1 untuk admin
+            'password' => bcrypt('12345678'), 
         ]);
 
         // Seeder untuk akun author
         User::create([
             'name' => 'Ade',
             'email' => 'Ade@gmail.com',
-            'roles' => 'author',
+            'roles' => 2, // 0 untuk author
             'password' => bcrypt('12345678'),
         ]);
     }

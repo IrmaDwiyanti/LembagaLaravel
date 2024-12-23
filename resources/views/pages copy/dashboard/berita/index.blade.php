@@ -12,7 +12,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-10">
-                <a href="{{ route('dashboard.berita.create') }}" class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded shadow-lg">
+                <a href="{{ route('pages copy.dashboard.berita.create') }}" class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded shadow-lg">
                     + Create Document
                 </a>
             </div>
@@ -23,7 +23,6 @@
                         <thead>
                             <tr>
                                 <th class="px-6 py-3 text-sm font-medium text-gray-500 uppercase tracking-wider">No</th>
-                                <th class="px-6 py-3 text-sm font-medium text-gray-500 uppercase tracking-wider">ID</th>
                                 <th class="px-6 py-3 text-sm font-medium text-gray-500 uppercase tracking-wider">Judul</th>
                                 <th class="px-6 py-3 text-sm font-medium text-gray-500 uppercase tracking-wider">Author</th>
                                 <th class="px-6 py-3 text-sm font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
@@ -37,7 +36,6 @@
                             @forelse($berita as $index => $item) 
                             <tr class="border-t hover:bg-gray-50">
                                 <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $index + 1 }}</td>
-                                <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $item->id }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-900">{{ Str::limit($item->title, 30) }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-900">{{ $item->author }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-900">{{ $item->date }}</td>
@@ -58,9 +56,9 @@
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-900">
                                     <div class="flex space-x-2">
-                                        <a href="{{ route('dashboard.berita.detail', $item->id) }}" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded text-xs">Detail</a>
-                                        <a href="{{ route('dashboard.berita.edit', $item->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded text-xs">Edit</a>
-                                        <form action="{{ route('dashboard.berita.delete', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?');">
+                                        <a href="{{ route('pages copy.dashboard.berita.detail', $item->id) }}" class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded text-xs">Detail</a>
+                                        <a href="{{ route('pages copy.dashboard.berita.edit', $item->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded text-xs">Edit</a>
+                                        <form action="{{ route('pages copy.dashboard.berita.delete', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded text-xs">Hapus</button>

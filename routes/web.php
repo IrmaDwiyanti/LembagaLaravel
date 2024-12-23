@@ -3,7 +3,10 @@
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BeritaUserController;
 
+
+use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 
 
@@ -74,17 +77,15 @@ Route::get('/beritaslide', [BeritaController::class, 'slideBerita']);
 
 Route::get('/contentberita/{id}', [BeritaController::class, 'contentberita'])->name('contentberita');
 
+// Rute untuk Admin dan Author
 Route::middleware('auth')->group(function () {
+    // Profile User
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
-    //tampil ke view
-    // Route::get('/home', [BeritaController::class, 'home'])->name('home');
-    // Route::get('/beritaslide', [BeritaController::class, 'slideBerita']);
+});
 
-
-    //berita
+Route::group(['middleware' => 'checkrole:1'], function () {
     Route::get('/berita', [BeritaController::class, 'index'])->name('dashboard.berita.index');
     Route::get('/berita/create', [BeritaController::class, 'create'])->name('dashboard.berita.create');
     Route::post('/berita', [BeritaController::class, 'store'])->name('dashboard.berita.store');
@@ -100,28 +101,49 @@ Route::middleware('auth')->group(function () {
     Route::post('/user', [UserController::class, 'store'])->name('dashboard.user.store');
     Route::get('/user/create', [UserController::class, 'create'])->name('dashboard.user.create');
     Route::delete('/dashboard/user/{id}', [UserController::class, 'delete'])->name('dashboard.user.delete');
-
-    //Route::middleware(['CheckRole:admin'])->group(function () {
-      //  Route::get('/dashboard/berita', function () {
-        //    return view('dashboard.berita.index');
-        //});
-        //Route::get('dashboard/berita/{id}/edit', function () {
-          //  return view('dashboard.berita.edit');
-        //});
-    
-    //Route::middleware(['auth', 'role:admin'])->group(function () {
-    //    Route::get('dashboard/berita', [BeritaController::class, 'index'])->name('dashboard.berita.index');
-    //    Route::get('dashboard/berita/{id}/edit', [BeritaController::class, 'edit'])->name('dashboard.berita.edit');
-    //    Route::delete('dashboard/berita/{id}', [BeritaController::class, 'delete'])->name('dashboard.berita.delete');
-   // });
-    
-    //Route::middleware(['auth', 'role:author'])->group(function () {
-    //    Route::get('dashboard/berita/create', [BeritaController::class, 'create'])->name('dashboard.berita.create');
-     //   Route::post('dashboard/berita', [BeritaController::class, 'store'])->name('dashboard.berita.store');
-       // Route::put('dashboard/berita/{id}', [BeritaController::class, 'update'])->name('dashboard.berita.update');
-    //});
-    
 });
+
+Route::group(['middleware' => 'checkrole:2'], function () {
+    Route::get('/beritaauthor', [BeritaUserController::class, 'index'])->name('pages copy.dashboard.berita.index');
+    Route::get('/beritaauthor/create', [BeritaUserController::class, 'create'])->name('pages copy.dashboard.berita.create');
+    Route::post('/beritaauthor', [BeritaUserController::class, 'store'])->name('pages copy.dashboard.berita.store');
+    Route::get('/beritaauthor/{id}/edit', [BeritaUserController::class, 'edit'])->name('pages copy.dashboard.berita.edit');
+    Route::put('/beritaauhtor/{id}', [BeritaUserController::class, 'update'])->name('pages copy.dashboard.berita.update');
+    Route::delete('/dashboard/beritaauthor/{id}', [BeritaUserController::class, 'delete'])->name('pages copy.dashboard.berita.delete');
+    Route::get('/dashboard/beritaauthor/{id}/detail', [BeritaUserController::class, 'show'])->name('pages copy.dashboard.berita.detail');
+});
+/* // Rute yang hanya bisa diakses oleh Admin
+Route::middleware(['auth', 'CheckRole'])->group(function () {
+    Route::get('/berita', [BeritaController::class, 'index'])->name('dashboard.berita.index');
+    Route::get('/berita/create', [BeritaController::class, 'create'])->name('dashboard.berita.create');
+    Route::post('/berita', [BeritaController::class, 'store'])->name('dashboard.berita.store');
+    Route::get('/berita/{id}/edit', [BeritaController::class, 'edit'])->name('dashboard.berita.edit');
+    Route::put('/berita/{id}', [BeritaController::class, 'update'])->name('dashboard.berita.update');
+    Route::delete('/dashboard/berita/{id}', [BeritaController::class, 'delete'])->name('dashboard.berita.delete');
+    Route::get('/dashboard/berita/{id}/detail', [BeritaController::class, 'show'])->name('dashboard.berita.detail');
+
+    //user
+    Route::get('/user', [UserController::class, 'index'])->name('dashboard.user.index');
+    Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('dashboard.user.edit');
+    Route::put('/user/{id}', [UserController::class, 'update'])->name('dashboard.user.update');
+    Route::post('/user', [UserController::class, 'store'])->name('dashboard.user.store');
+    Route::get('/user/create', [UserController::class, 'create'])->name('dashboard.user.create');
+    Route::delete('/dashboard/user/{id}', [UserController::class, 'delete'])->name('dashboard.user.delete');
+}); */
+
+/* // Rute yang hanya bisa diakses oleh Author
+Route::middleware(['auth', 'role:2'])->group(function () {
+    Route::get('author/berita', [BeritaController::class, 'index'])->name('dashboard.berita.index');
+    Route::get('author/berita/create', [BeritaController::class, 'create'])->name('dashboard.berita.create');
+    Route::post('author/berita', [BeritaController::class, 'store'])->name('dashboard.berita.store');
+    Route::get('author/berita/{id}/edit', [BeritaController::class, 'edit'])->name('dashboard.berita.edit');
+    Route::put('author/berita/{id}', [BeritaController::class, 'update'])->name('dashboard.berita.update');
+    Route::delete('author/dashboard/berita/{id}', [BeritaController::class, 'delete'])->name('dashboard.berita.delete');
+    Route::get('author/dashboard/berita/{id}/detail', [BeritaController::class, 'show'])->name('dashboard.berita.detail');
+}); */
+
+
+Route::post('/uploadImage', 'BeritaController@uploadImage');
 
 
 require __DIR__.'/auth.php';

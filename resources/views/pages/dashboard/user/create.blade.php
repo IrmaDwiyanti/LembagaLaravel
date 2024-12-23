@@ -61,11 +61,12 @@
 
                     <div class="mb-4">
                         <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
-                        <select name="role" id="role" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                            <option value="admin">Admin</option>
-                            <option value="user">Author</option>
+                        <select name="roles" id="role" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <option value="1" {{ old('roles', $user->roles ?? '') == 1 ? 'selected' : '' }}>Admin</option>
+                            <option value="2" {{ old('roles', $user->roles ?? '') == 2 ? 'selected' : '' }}>Author</option>
                         </select>
                     </div>
+                    
 
                     <div class="flex justify-end">
                         <a href="{{ route('dashboard.user.index') }}" class="bg-gray-500 text-white py-2 px-4 rounded shadow-sm hover:bg-gray-700 text-xs">
