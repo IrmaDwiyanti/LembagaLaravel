@@ -5,19 +5,21 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Home') }}
+                    </x-nav-link>
+                    
+
+                    @if (Auth::user()->roles == '1')
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-
-
-                    @if (Auth::user()->roles == '1')
                     <x-nav-link href="{{route('dashboard.user.index')}}"  :active="request()->routeIs('dashboard.user.index')">
                         {{ __('Users') }}
                         </x-nav-link>

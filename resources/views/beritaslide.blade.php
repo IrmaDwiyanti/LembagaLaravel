@@ -21,8 +21,6 @@
   @include('components.navbarview')
 
 
-  
-
   <!--content-->
   <!-- Berita Terbaru -->
 <div class="containerbs">
@@ -37,7 +35,8 @@
                           {{ $item->title ?? 'Judul tidak tersedia' }}
                       </div>
                       <div class="news-metabs">
-                          {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}
+                        <strong>{{ $item->author ?? 'Penulis tidak tersedia' }}</strong> | 
+                        {{ \Carbon\Carbon::parse($item->date)->format('d/m/Y') }}
                       </div>
                   </div>
               </a>

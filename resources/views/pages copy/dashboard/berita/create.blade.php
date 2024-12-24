@@ -81,11 +81,11 @@
                         </div>
                     </div>
 
-                    <!-- Tambahkan dropdown untuk memilih status -->
+                    {{-- <!-- Tambahkan dropdown untuk memilih status -->
                     <select name="status" id="status" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         <option value="0" {{ old('status', '0') == '0' ? 'selected' : '' }}>Draft</option>
                         <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Published</option>
-                    </select>
+                    </select> --}}
                         
 
                     <div class="flex justify-end mt-4 ">

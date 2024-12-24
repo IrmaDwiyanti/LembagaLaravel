@@ -15,10 +15,11 @@ body {
     overflow-x: hidden;
 }
 
+/**home/
 /* Header */
 /* style login dan register */
 .header .auth-links {
-    margin-left: 200px;
+    margin-left: 170px;
     margin-right: 30px;
     display: flex; 
 }
@@ -43,7 +44,7 @@ body {
 .header {
     background-color: #2faa2f;
     color: white;
-    padding: 5px;
+    padding: 7px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,7 +69,7 @@ body {
 }
 .header a {
     color: white;
-    margin: 0 15px;
+    margin: 0 5px;
     text-decoration: none;
     position: relative;
     margin-right: 40px;
@@ -81,14 +82,13 @@ body {
 }
 
 .header .dropdown {
-    display: inline-block;
+    display: flex;
     position: relative;
 }
 
-
 .nav-links {
     display: flex;
-    align-items: center; /* Vertikal tengah */
+    align-items: center;
 }
 
 .header .dropdown-content {
@@ -100,7 +100,7 @@ body {
     overflow: hidden;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    left: 50%; /* Menggunakan tengah dropdown */
+    left: 50%; 
     transform: translateX(-50%);
 }
 
@@ -960,6 +960,8 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: auto;
+    height: fit-content;    
 }
 
 .sidebarcb h4 {
@@ -1034,7 +1036,7 @@ body {
     color: #666;
     font-size: 14px;
 }
-/*----------------------------END BERITA-----------------------------*/
+/*----------------------------END CONTENT BERITA-----------------------------*/
 
 /*=========================STYLE BERITA YG SLIDE=======================*/
 /*-----------------------------BERITA SLIDE----------------------------*/
@@ -1248,16 +1250,16 @@ body {
         margin-bottom: 30px;
     }
     .auth-links {
-        order: 1; /* Muncul di sebelah kiri menu burger */
+        order: 1; 
     }
 
     .auth-links a {
-        font-size: 9px; /* Sesuaikan ukuran teks */
-        padding: 5px; /* Kurangi padding */
+        font-size: 9px; 
+        padding: 5px; 
     }
 
     .nav-links {
-        top: 60px; /* Sesuaikan dengan tinggi header */
+        top: 60px; 
     }
     .menu-bars {
         display: block;
@@ -1267,7 +1269,7 @@ body {
     }
     
     .nav-links {
-        display: none;
+        display: flex;
         width: 100%;
         position: absolute;
         top: 100%;
@@ -1279,7 +1281,11 @@ body {
         z-index: 999;
         opacity: 0;
         visibility: hidden;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
     }
+    
     
     .nav-links.active {
         display: flex;
@@ -1312,7 +1318,10 @@ body {
         width: 100%;
         padding: 10px 20px;
     }
-    
+    .header .dropdown {
+        display: inline-block;
+        position: relative;
+    }
     .dropdown {
         width: 100%;
     }

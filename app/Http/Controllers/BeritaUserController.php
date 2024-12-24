@@ -34,10 +34,10 @@ class BeritaUserController extends Controller
             'author' => 'required',
             'date' => 'required|date',
             'content' => 'required',
-            'status' => 'required|in:0,1',
+            /* 'status' => 'required|in:0,1', */
         ]);
 
-        $status = $request->input('status', '0');
+       /*  $status = $request->input('status', '0'); */
         $path = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
 
         Berita::create([
@@ -46,7 +46,7 @@ class BeritaUserController extends Controller
             'date' => $request->date,
             'content' => $request->content,
             'image' => $path,
-            'status' => $status,  
+            /* 'status' => $status,  */ 
             'user_id' => Auth::id(),
         ]);
 
@@ -62,17 +62,17 @@ class BeritaUserController extends Controller
             'author' => 'required|string|max:255',
             'date' => 'required|date',
             'content' => 'required|string',
-            'status' => 'required|in:0,1',
+            /* 'status' => 'required|in:0,1', */
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $status = $request->input('status', '0');
+        /* $status = $request->input('status', '0'); */
 
         $berita->title = $request->title;
         $berita->author = $request->author;
         $berita->date = $request->date;
         $berita->content = $request->content;
-        $berita->status = $request->status;
+       /*  $berita->status = $request->status; */
 
         if ($request->hasFile('image')) {
             if ($berita->image && Storage::exists('public/' . $berita->image)) {

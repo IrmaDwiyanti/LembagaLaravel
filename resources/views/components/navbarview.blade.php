@@ -7,6 +7,7 @@
         <a href="{{ url('home') }}">HOME</a>
         <a href="{{ url('pusat') }}">PUSAT</a>
         <a href="{{ url('ukm') }}">UKM</a>
+        <a href="{{ url('beritaslide') }}">BERITA</a>
         <div class="dropdown">
             <a href="#" onclick="toggleDropdown(event)">FAKULTAS & PRODI</a>
             <div class="dropdown-content">
@@ -21,10 +22,12 @@
                 <a href="https://fu.uinsgd.ac.id/">Ushuluddin</a>
             </div>
         </div>
- <div class="auth-links">
-        <a href="{{ url('login') }}">Login</a>
-        <a href="{{ url('register') }}">Register</a>
-    </div>
+        <div class="auth-links">
+            <a href="{{ url('login') }}">Login</a>
+            <a href="{{ url('register') }}">Register</a>
+        </div>
     </div>
    
 </div>
+
+
