@@ -28,7 +28,14 @@
     </div>
     
     <div class="description">
-        <p>LP2M didirikan berdasarkan Peraturan Menteri Agama Republik Indonesia Nomor 7 Tahun 2013 Tentang Organisasi dan Tata Kerja (Ortaker) Universitas Islam Negeri (UIN) Sunan Gunung Djati (SGD) Bandung. Struktur LP2M terbagi menjadi tiga komponen, yaitu: 1) Pusat Penelitian dan Penerbitan; 2) Pusat Pengabdian kepada Masyarakat; 3) dan Pusat Studi Gender dan Anak. Sebelum terhimpun dalam struktur LP2M, komponen pusat-pusat tersebut sebelumnya merupakan lembaga-lembaga tersendiri di lingkungan UIN SGD Bandung sebelumnya Institut Agama Islam Negeri (IAIN) SGD Bandung. Sejak diterbitkannya Ortaker Peraturan Menteri Agama tahun 2013, maka ketiga komponen lembaga tersebut dilebur dan digabungkan dalam struktur LP2M.</p>
+        <p>LP2M didirikan berdasarkan Peraturan Menteri Agama Republik Indonesia Nomor 7 Tahun 2013 
+            Tentang Organisasi dan Tata Kerja (Ortaker) Universitas Islam Negeri (UIN) Sunan Gunung Djati (SGD) Bandung.
+             Struktur LP2M terbagi menjadi tiga komponen, yaitu: 1) Pusat Penelitian dan Penerbitan; 
+             2) Pusat Pengabdian kepada Masyarakat; 3) dan Pusat Studi Gender dan Anak. 
+             Sebelum terhimpun dalam struktur LP2M, komponen pusat-pusat tersebut sebelumnya merupakan 
+             lembaga-lembaga tersendiri di lingkungan UIN SGD Bandung sebelumnya Institut Agama Islam Negeri 
+             (IAIN) SGD Bandung. Sejak diterbitkannya Ortaker Peraturan Menteri Agama tahun 2013, maka ketiga 
+             komponen lembaga tersebut dilebur dan digabungkan dalam struktur LP2M.</p>
     </div>
 
     <!--footer-->

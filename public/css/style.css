@@ -640,7 +640,7 @@ body {
 }
 /*-------------------------------END UKM-------------------------*/
 
-/*STYLE VISI MISI SEJARAH*/
+/*STYLE VISI MISI tujuan*/
 /*VISI MISI*/
 /*content*/
 .containervm {
@@ -701,7 +701,6 @@ body {
 .sasaran {
     background-color: white;
 }
-
 /*END VISI MISI*/
 
 /*===========================STYLE SEJARAH=======================*/
@@ -1436,6 +1435,54 @@ body {
         font-size: 16px;
     }
     /*visi misi*/
+    .containervm {
+        flex-direction: column; 
+        margin: 20px; 
+        padding: 10px;
+    }
+
+    .image-containervm, .text-containervm {
+        flex: 1 1 50%; 
+        text-align: center; 
+        padding: 10px;
+    }
+    .image-containervm {
+        flex: 1;    
+        padding-right: 20px;
+        background-color: #4CAF50;
+        padding: 5px; 
+        max-width: 220px; 
+        position: relative;
+        height: 300px;
+    }
+    .image-containervm img {
+        width: 100%;
+        height: 250px;
+        max-width: 200px; 
+        position: relative;
+        right: -30px; 
+        margin-top: 20px;
+    }
+
+    .text-containervm {
+        margin: 0; 
+        text-align: left; 
+    }
+
+    .text-containervm h1 {
+        font-size: 20px; 
+        margin-bottom: 10px; 
+    }
+
+    .text-containervm ol {
+        font-size: 14px; 
+        line-height: 1.8; 
+    }
+
+    .visi, .misi, .sasaran {
+        padding: 25px; 
+        margin-bottom: 20px; 
+    }
 
     /*-pusat- PUSLITPEN, PKM, PGSA */
     .sectionpusatps {

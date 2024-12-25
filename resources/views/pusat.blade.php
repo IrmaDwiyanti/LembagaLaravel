@@ -25,7 +25,7 @@
     
        <!--content-->
     <div class="contentpusat">
-        <img alt="Meeting room with people sitting and a presentation screen" src="https://storage.googleapis.com/a1aa/image/TAGUnlq6mOIeVCbulbyQ93ehTwthq1vuDAFOvN7WJ2UFESoTA.jpg"/>
+        <img alt="Pusat Pusat UIN Bandung" src="{{ asset('images/aljamiah.jpg') }}"/>
         <h1>
          Pusat UIN Sunan Gunung Djati Bandung
         </h1>
@@ -45,39 +45,39 @@
         </div>
         <div class="grid-container">
          <div class="grid-item">
-            <img alt="Library building" src="{{ asset('images/Perpus.jpg') }}"/>
+            <img alt="Perpustakaan" src="{{ asset('images/perpustakaan.jpg') }}"/>
             <p>Pusat Perpustakaan</p>
          </div>
          <div class="grid-item">
-            <img alt="Information and Data Center building" src="{{ asset('images/Ptipd.jpg') }}"/>
+            <img alt="ptipd" src="{{ asset('images/Ptipd.jpg') }}"/>
             <p>Pusat Teknologi Informasi dan Pangkalan Data</p>
          </div>
          <div class="grid-item">
-            <img alt="International Office building" src="{{ asset('images/8.jpg') }} "/>
+            <img alt="pusat internasional office" src="{{ asset('images/8.jpg') }} "/>
             <p>Pusat International Office</p>
          </div>
          <div class="grid-item">
-            <img alt="Law and Legislation Center building" src="{{ asset('images/Kopertais.jpg') }} "/>
+            <img alt="Pusat Hukum dan Perundang-undangan" src="{{ asset('images/10.jpg') }} "/>
             <p>Pusat Hukum dan Perundang-undangan</p>
          </div>
          <div class="grid-item">
-            <img alt="Career and Entrepreneurship Center building" src="{{ asset('images/Kopertais.jpg') }} "/>
+            <img alt="Pusat Karis Kewirausahaan" src="{{ asset('images/Kopertais.jpg') }} "/>
             <p>Pusat Karir Kewirausahaan</p>
          </div>
          <div class="grid-item">
-            <img alt="Business Development Center building" src="{{ asset('images/Bisnis Center.jpg') }} "/>
+            <img alt="Pusat Pengembangan Bisnis" src="{{ asset('images/Bisnis Center.jpg') }} "/>
             <p>Pusat Pengembangan Bisnis</p>
          </div>
          <div class="grid-item">
-            <img alt="Halal Center building" src="{{ asset('images/Bisnis Center.jpg') }} "/>
+            <img alt="Pusat Halal" src="{{ asset('images/Lab Halal.jpg') }} "/>
             <p>Pusat Halal</p>
          </div>
          <div class="grid-item">
-            <img alt="Language Development Center building" src="{{ asset('images/Lab Halal.jpg') }} "/>
+            <img alt="Pusat Pengembangan Bahasa" src="{{ asset('images/Lab Bahasa.jpg') }} "/>
             <p>Pusat Pengembangan Bahasa</p>
          </div>
          <div class="grid-item">
-            <img alt="New Student Admission Center building" src="{{ asset('images/Lab Bahasa.jpg') }} "/>
+            <img alt="Pusat Penerimaan Mahasiswa Baru" src="{{ asset('images/Lab.jpg') }} "/>
             <p>Pusat Penerimaan Mahasiswa Baru</p>
          </div>
          <div class="grid-item">
@@ -85,27 +85,27 @@
             <p>Pusat Penelitian dan Penertiban (PUSLITPEN)</p>
          </div>
          <div class="grid-item">
-            <img alt="Language Development Center building" src="{{ asset('images/Ptipd.jpg') }} "/>
-            <p>Pusat Pengabdian Kepada Masyarakat (PKM)</p>
-         </div>
-         <div class="grid-item">
-            <img alt="New Student Admission Center building" src="{{ asset('images/Lab Bahasa.jpg') }} "/>
-            <p>Pusat Studi Gender dan Anak (PSGA)</p>
-         </div>
-         <div class="grid-item">
-            <img alt="New Student Admission Center building" src="{{ asset('images/Ppg.jpg') }} "/>
+            <img alt="Pusat Pengembangan Standar Mutu" src="{{ asset('images/Ppg.jpg') }} "/>
             <p>Pusat Pengembangan Standar Mutu</p>
          </div>
          <div class="grid-item">
-            <img alt="Halal Center building" src="{{ asset('images/Riset perdana.jpg') }} "/>
+            <img alt="Pusat Studi Gender dan Anak" src="{{ asset('images/Lembaga p2m.jpg') }} "/>
+            <p>Pusat Studi Gender dan Anak (PSGA)</p>
+         </div>   
+         <div class="grid-item">
+            <img alt="Pusat Audit dan Pengendalian Mutu" src="{{ asset('images/Riset perdana.jpg') }} "/>
             <p>Pusat Audit dan Pengendalian Mutu</p>
          </div>
          <div class="grid-item">
-            <img alt="Language Development Center building" src="{{ asset('images/Mipa.jpg') }} "/>
+            <img alt="Pusat Pengabdian kepada Masyarakat" src="{{ asset('images/Lembaga p2m.jpg') }} "/>
+            <p>Pusat Pengabdian Kepada Masyarakat (PKM)</p>
+         </div>
+         <div class="grid-item">
+            <img alt="Pusat DP-Dikta" src="{{ asset('images/Mipa.jpg') }} "/>
             <p>Pusat DP-DIKTA</p>
          </div>
          <div class="grid-item">
-            <img alt="New Student Admission Center building" src="{{ asset('images/Unit Layanan.jpg') }} "/>
+            <img alt="Pusat Akreditasi Internasional" src="{{ asset('images/Unit Layanan.jpg') }} "/>
             <p>Pusat Akreditasi Internasional</p>
          </div>
         </div>
