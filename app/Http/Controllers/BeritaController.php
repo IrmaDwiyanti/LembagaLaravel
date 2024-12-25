@@ -13,7 +13,10 @@ class BeritaController extends Controller
     public function index() {
         // Jika pengguna adalah admin, ambil semua berita
         if (Auth::user()->roles == '1') {
-            $berita = Berita::paginate(5); 
+            $berita = Berita::orderBy('date', 'desc')->paginate(5);
+            
+            /*urutan berita di index */
+            /*$berita = Berita::paginate(5); */
         } else {
             $berita = Berita::where('user_id', Auth::id())->paginate(5); 
         }

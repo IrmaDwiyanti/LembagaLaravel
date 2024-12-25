@@ -27,8 +27,17 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        if (Auth::user()->roles == '1') { // Admin
+            return redirect()->intended(route('dashboard')); // Redirect ke Dashboard
+        }
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if (Auth::user()->roles == '2') { // Author
+            return redirect()->route('pages copy.dashboard.berita.index');  // Redirect ke Berita
+        }
+
+        // Default redirect jika role tidak dikenali
+        return redirect()->intended(route('home'));
+
     }
 
     /**

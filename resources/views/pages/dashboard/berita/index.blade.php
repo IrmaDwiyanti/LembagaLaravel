@@ -12,13 +12,15 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-10">
-                <a href="{{ route('dashboard.berita.create') }}" class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded shadow-lg">
+                <a href="{{ route('dashboard.berita.create') }}" class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded shadow-lg  ml-4">
                     + Create Document
                 </a>
             </div>
             
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
+                    <div class="overflow-x-auto">
+
                     <table id="crudTable" class="min-w-full table-auto border-collapse border border-gray-200 ">
                         <thead>
                             <tr>
@@ -75,6 +77,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                </div>
                 </div>
             </div>
             <div class="mt-4">

@@ -10,116 +10,10 @@ body {
     min-height: 100vh; 
     display: flex;
     flex-direction: column;
-    
     height: 100%;
     overflow-x: hidden;
 }
 
-/**home/
-/* Header */
-/* style login dan register */
-.header .auth-links {
-    margin-left: 170px;
-    margin-right: 30px;
-    display: flex; 
-}
-
-.header .auth-links a {
-    color: white;
-    text-decoration: none;
-    padding: 0 10px;
-    border: 1px solid white;
-    border-radius: 10px;
-    font-size: 11px;
-    transition: all 0.3s ease;
-    margin: 2px;
-}
-
-.header .auth-links a:hover {
-    background-color: white;
-    color: #2faa2f;
-    border-color: #2faa2f;
-}
-
-.header {
-    background-color: #2faa2f;
-    color: white;
-    padding: 7px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.menu-bars {
-    display: none;
-    cursor: pointer;
-    padding: 2px;
-    font-size: 24px;
-    color: white;
-}
-.header span {
-    margin-left: 30px;
-    font-size: 13px;
-}
-.header a {
-    color: white;
-    margin: 0 5px;
-    text-decoration: none;
-    position: relative;
-    margin-right: 40px;
-    font-size: 13px;
-}
-
-.header a:hover {
-    color: #3e8e41; 
-    text-decoration: none; 
-}
-
-.header .dropdown {
-    display: flex;
-    position: relative;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-}
-
-.header .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #4caf50;
-    min-width: 250px;
-    white-space: nowrap;
-    overflow: hidden;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    left: 50%; 
-    transform: translateX(-50%);
-}
-
-.header .dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.header .dropdown-content a:hover {
-    background-color: #3e8e41;
-}
-
-.header .dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Footer */
 /* Footer */
 .footer {
     background-color: #2faa2f;
@@ -204,6 +98,110 @@ body {
 .footer-center p.footer-copyright {
     font-weight: normal;
     font-size: 12px; 
+}
+
+/*=========================STYLE NAVBAR=========================*/
+/* style login dan register */
+.header .auth-links {
+    margin-left: 170px;
+    margin-right: 30px;
+    display: flex; 
+}
+
+.header .auth-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 11px;
+    transition: all 0.3s ease;
+    margin: 2px;
+}
+
+.header .auth-links a:hover {
+    background-color: white;
+    color: #2faa2f;
+    border-color: #2faa2f;
+}
+
+.header {
+    background-color: #2faa2f;
+    color: white;
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.menu-bars {
+    display: none;
+    cursor: pointer;
+    padding: 2px;
+    font-size: 24px;
+    color: white;
+}
+.header span {
+    margin-left: 30px;
+    font-size: 13px;
+}
+.header a {
+    color: white;
+    margin: 0 5px;
+    text-decoration: none;
+    position: relative;
+    margin-right: 40px;
+    font-size: 13px;
+}
+
+.header a:hover {
+    color: #3e8e41; 
+    text-decoration: none; 
+}
+
+.header .dropdown {
+    display: flex;
+    position: relative;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.header .dropdown-content {
+    margin-top: 30px;
+    display: none;
+    position: absolute;
+    background-color: #4caf50;
+    min-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: 50%; 
+    transform: translateX(-50%);
+}
+
+.header .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.header .dropdown-content a:hover {
+    background-color: #3e8e41;
+}
+
+.header .dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /*=========================STYLE HOME=========================*/
