@@ -142,7 +142,6 @@ class BeritaController extends Controller
         // Mencari berita berdasarkan ID
         $berita = Berita::find($id);
     
-        // Jika berita tidak ditemukan, redirect ke halaman lain atau tampilkan pesan error
         if (!$berita) {
             return redirect()->route('home')->with('error', 'Berita tidak ditemukan.');
         }

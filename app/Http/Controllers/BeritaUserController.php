@@ -11,7 +11,7 @@ class BeritaUserController extends Controller
 {
     // Menampilkan berita berdasarkan user yang login
     public function index() {
-        $berita = Berita::where('user_id', Auth::id())->paginate(10); // Gunakan pagination
+        $berita = Berita::where('user_id', Auth::id())->paginate(10); 
         return view('pages copy.dashboard.berita.index', compact('berita'));
     }
 
@@ -22,7 +22,7 @@ class BeritaUserController extends Controller
 
     // Menampilkan form edit berita
     public function edit($id) {
-        $berita = Berita::where('user_id', Auth::id())->findOrFail($id); // Pastikan user_id sesuai
+        $berita = Berita::where('user_id', Auth::id())->findOrFail($id); 
         return view('pages copy.dashboard.berita.edit', compact('berita'));
     }
 
@@ -55,7 +55,7 @@ class BeritaUserController extends Controller
 
     // Mengupdate berita
     public function update(Request $request, $id) {
-        $berita = Berita::where('user_id', Auth::id())->findOrFail($id); // Pastikan user_id sesuai
+        $berita = Berita::where('user_id', Auth::id())->findOrFail($id); 
 
         $request->validate([
             'title' => 'required|string|max:255',

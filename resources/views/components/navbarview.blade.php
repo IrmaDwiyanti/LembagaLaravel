@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="auth-links">
-            <a href="{{ url('login') }}">Login</a>
+            {{-- <a href="{{ url('login') }}">Login</a> --}}
             <a href="{{ url('register') }}">Register</a>
         </div>
     </div>

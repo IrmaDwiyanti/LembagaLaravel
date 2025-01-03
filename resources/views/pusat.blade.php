@@ -130,8 +130,8 @@
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <p>Email: <a>lp2m@uinsgd.ac.id</a></p>
-            <p>(022)7800525</p>
+            <p>Email: <a href="mailto:lp2m@uinsgd.ac.id">lp2m@uinsgd.ac.id</a></p>
+            <p>(022) 7800525</p>
         </div>
     </footer>
 
