@@ -64,7 +64,7 @@
                 @else
                     <img src="{{ asset('images/default.jpg') }}" alt="Default Image" height="80" />
                 @endif
-                <a href="{{ route('contentberita', $item->id) }}">
+                <a href="{{ url('contentberita/' . $item->slug) }}">
                     <div>
                         <p class="title">{{ $item->title ?? 'Judul tidak tersedia' }}</p>
                         <div class="date">

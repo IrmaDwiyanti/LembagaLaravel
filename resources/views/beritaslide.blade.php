@@ -28,7 +28,7 @@
   <div class="news-gridbs">
       @foreach ($berita_terbaru as $item)
           <div class="news-itembs">
-              <a href="{{ url('contentberita/' . $item->id) }}">
+              <a href="{{ url('contentberita/' . $item->slug) }}">
                   <img alt="Image" height="200" src="{{ asset('storage/' . $item->image) }}" width="300"/>
                   <div class="news-contentbs">
                       <div class="news-titlebs">

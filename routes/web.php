@@ -118,7 +118,7 @@ Route::group(['middleware' => 'checkrole:2'], function () {
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-
+Route::get('contentberita/{slug?}', [BeritaController::class, 'contentberita'])->name('contentberita');
 
 Route::post('/uploadImage', 'BeritaController@uploadImage');
 

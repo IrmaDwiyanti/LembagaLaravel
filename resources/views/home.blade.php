@@ -127,7 +127,7 @@
     <h2>Berita Terbaru</h2>
     <hr />
     @foreach ($berita_terbaru as $item)
-      <a href="{{ url('contentberita/' . $item->id) }}">
+      <a href="{{ url('contentberita/' . $item->id . '/' . $item->slug) }}">
         <div class="news-item">
           @if ($item->image)
             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" height="80" />

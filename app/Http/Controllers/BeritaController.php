@@ -6,6 +6,7 @@ use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class BeritaController extends Controller
@@ -13,8 +14,10 @@ class BeritaController extends Controller
     public function index() {
         // Jika pengguna adalah admin, ambil semua berita
         if (Auth::user()->roles == '1') {
-            $berita = Berita::orderBy('date', 'desc')->paginate(5);
-            
+            $berita = Berita::orderBy('date', 'desc')
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+                        
             /*urutan berita di index */
             /*$berita = Berita::paginate(5); */
         } else {
@@ -50,8 +53,11 @@ class BeritaController extends Controller
     }
     
     public function show($id){
-    $berita = Berita::findOrFail($id); 
-    return view('pages.dashboard.berita.detail', compact('berita'));
+/*         $berita = Berita::where('id', $id)->where('slug', $slug)->firstOrFail();
+ */     $berita = Berita::findOrFail($id); 
+     return view('pages.dashboard.berita.detail', compact('berita'));
+
+ 
     }
 
     // Menyimpan berita baru
@@ -137,23 +143,30 @@ class BeritaController extends Controller
     return view('beritaslide', compact('berita_terbaru'));
     }
 
-    public function contentberita($id)
-    {
-        // Mencari berita berdasarkan ID
-        $berita = Berita::find($id);
-    
-        if (!$berita) {
-            return redirect()->route('home')->with('error', 'Berita tidak ditemukan.');
-        }
-    
-        // Mengambil 4 berita terbaru
-        $berita_terbaru = Berita::where('status', '1')
-            ->orderBy('date', 'desc')
-            ->take(4)
-            ->get();
-    
-        // Return view untuk konten berita dengan data berita dan berita terbaru
-        return view('contentberita', compact('berita', 'berita_terbaru'));
+     //membuat slug
+     public function contentberita($slug = null)
+{
+    // Jika slug ada, cari berita dengan slug tersebut
+    if ($slug) {
+        $berita = Berita::where('slug', $slug)->first();
+    } else {
+        // Jika tidak ada slug, tampilkan berita pertama
+        $berita = Berita::first();  // Fallback ke berita pertama
     }
-        
+
+    // Jika berita tidak ditemukan, tampilkan halaman utama
+    if (!$berita) {
+        return redirect()->route('home')->with('error', 'Berita tidak ditemukan.');
+    }
+
+    // Ambil berita terbaru
+    $berita_terbaru = Berita::where('status', '1')
+        ->orderBy('date', 'desc')
+        ->take(4)
+        ->get();
+
+    return view('contentberita', compact('berita', 'berita_terbaru'));
+}
+
+
 }
