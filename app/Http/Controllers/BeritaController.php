@@ -17,7 +17,7 @@ class BeritaController extends Controller
             $berita = Berita::orderBy('date', 'desc')
             ->orderBy('id', 'desc')
             ->paginate(5);
-                        
+
             /*urutan berita di index */
             /*$berita = Berita::paginate(5); */
         } else {
@@ -138,7 +138,7 @@ class BeritaController extends Controller
     {
     $berita_terbaru = Berita::where('status', '1') 
         ->orderBy('date', 'desc') 
-        ->paginate(4);
+        ->paginate(6);
 
     return view('beritaslide', compact('berita_terbaru'));
     }
@@ -167,6 +167,34 @@ class BeritaController extends Controller
 
     return view('contentberita', compact('berita', 'berita_terbaru'));
 }
+
+    //upload image tinymce
+  /*   public function uploadImage(Request $request)
+{
+    if ($request->hasFile('file')) {
+        $file = $request->file('file'); // Mendapatkan file dari request
+        $fileName = time() . '_' . $file->getClientOriginalName(); // Nama unik untuk file
+        $filePath = public_path('uploads'); // Path ke folder public/uploads
+
+        // Pindahkan file ke folder public/uploads
+        $file->move($filePath, $fileName);
+
+        // Kembalikan URL lokasi file agar TinyMCE dapat mengaksesnya
+        return response()->json([
+            'location' => asset('uploads/' . $fileName) // URL gambar
+        ]);
+    }
+
+    $request->validate([
+        'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $file = $request->file('file');
+    $path = $file->store('uploads', 'public');
+
+    return response()->json(['location' => "/storage/$path"]);
+}
+ */
 
 
 }

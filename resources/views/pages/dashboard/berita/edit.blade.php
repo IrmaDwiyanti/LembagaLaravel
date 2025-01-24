@@ -7,42 +7,47 @@
 
     <x-slot name="script">
         @push('scripts')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.7.0/tinymce.min.js"></script>
-        <script>
-            tinymce.init({
-                selector: 'textarea.content',
-                height: 600,
-                menubar: true,
-                plugins: 'lists link image preview imagetools',
-                toolbar: 'undo redo | bold italic underline | bullist numlist | link image | preview', 
-                branding: false,
+            <!-- Summernote Lite CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+            
+            <!-- jQuery -->
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            
+            <!-- Summernote Lite JS -->
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+
+            <style>
+                .note-editable ul {
+    list-style-type: disc; /* Untuk unordered list */
+    margin-left: 20px; /* Memberi jarak */
+}
+
+.note-editable ol {
+    list-style-type: decimal; /* Untuk ordered list */
+    margin-left: 20px; /* Memberi jarak */
+}
+
+
+
+            </style>
     
-                image_title: true,
-                automatic_uploads: true,
-                images_upload_url: '/uploadImage',  
-                file_picker_types: 'image',
-                file_picker_callback: function (callback, value, meta) {
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'file');
-                    input.setAttribute('accept', 'image/*');
-                    input.onchange = function () {
-                        var file = this.files[0];
-    
-                        var reader = new FileReader();
-                        reader.readAsDataURL(file);
-                        reader.onload = function () {
-                            var id = 'blobid' + (new Date()).getTime();
-                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                            var base64 = reader.result.split(',')[1];
-                            var blobinfo = blobCache.create(id, file, base64);
-                            blobCache.add(blobinfo);
-                            callback(blobinfo.blobUrl(), { title: file.name });
-                        };
-                    };
-                    input.click();
-                }
-            });
-        </script>
+            <!-- Inisialisasi Summernote Lite -->
+            <script>
+                $(document).ready(function () {
+                    $('#summernote').summernote({
+                        placeholder: 'Masukkan konten di sini...',
+                        tabsize: 2,
+                        height: 700, // Atur tinggi editor
+                        focus: true, // Fokus otomatis saat editor terbuka
+                        toolbar: [
+                            ['font', ['bold', 'italic', 'underline']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen']]
+                        ]
+                    });
+                });
+            </script>
         @endpush
     </x-slot>
     
@@ -52,7 +57,7 @@
             <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <form method="POST" action="{{ route('dashboard.berita.update', $berita->id) }}" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT') 
+                    @method('PUT')
                     <div class="mb-4">
                         <label for="title" class="block text-sm font-medium text-gray-700">Judul</label>
                         <input type="text" name="title" id="title" value="{{ old('title', $berita->title) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
@@ -70,9 +75,12 @@
 
                     <div class="mt-4">
                         <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                        <textarea name="content" id="content" class="content mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">{{ old('content', $berita->content) }}</textarea>
-                    </div> 
+                        <textarea name="content" id="summernote" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            {{ old('content', $berita->content) }}
+                        </textarea>
+                    </div>
                     
+
                     <div class="mb-4">
                         <label for="image" class="block text-sm font-medium text-gray-700">Image Cover</label>
                         <input type="file" name="image" id="image" accept="image/*" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
@@ -91,7 +99,7 @@
                             <option value="0" {{ old('status', $berita->status) == '0' ? 'selected' : '' }}>Draft</option>
                             <option value="1" {{ old('status', $berita->status) == '1' ? 'selected' : '' }}>Published</option>
                         </select>
-                    </div>                    
+                    </div>
 
                     <div class="flex justify-end">
                         <a href="{{ route('dashboard.berita.index') }}" class="bg-gray-500 text-white py-2 px-4 rounded shadow-sm hover:bg-gray-700 text-xs">

@@ -120,7 +120,9 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 
 Route::get('contentberita/{slug?}', [BeritaController::class, 'contentberita'])->name('contentberita');
 
-Route::post('/uploadImage', 'BeritaController@uploadImage');
+Route::post('/uploadImage', [BeritaController::class, 'uploadImage'])->name('uploadImage');
+
+
 
 
 require __DIR__.'/auth.php';

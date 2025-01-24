@@ -20,6 +20,9 @@
         <meta name="theme-color" content="#6777ef"/>
         <link rel="apple-touch-icon" href="{{ asset('icon512.png') }}">
         <link rel="manifest" href="{{ asset('/manifest.json') }}">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" rel="stylesheet">
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -39,7 +42,6 @@
                 {{ $slot }}
             </main>
         </div>
-        @stack('scripts')
 
         <script src="{{ asset('/sw.js') }}"></script>
 <script>
@@ -58,5 +60,8 @@
      console.error("Service workers are not supported.");
   }
 </script>
+
+@stack('scripts')
+
     </body>
 </html>
