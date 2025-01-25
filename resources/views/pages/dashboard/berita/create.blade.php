@@ -7,42 +7,51 @@
 
     <x-slot name="script">
         @push('scripts')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.7.0/tinymce.min.js"></script>
-        <script>
-            tinymce.init({
-                selector: 'textarea.content',
-                height: 500,
-                menubar: true,
-                plugins: 'lists link image preview imagetools',
-                toolbar: 'undo redo | bold italic underline | bullist numlist | link image | preview', 
-                branding: false,
-    
-                image_title: true,
-                automatic_uploads: true,
-                images_upload_url: '/uploadImage',  
-                file_picker_types: 'image',
-                file_picker_callback: function (callback, value, meta) {
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'file');
-                    input.setAttribute('accept', 'image/*');
-                    input.onchange = function () {
-                        var file = this.files[0];
-    
-                        var reader = new FileReader();
-                        reader.readAsDataURL(file);
-                        reader.onload = function () {
-                            var id = 'blobid' + (new Date()).getTime();
-                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                            var base64 = reader.result.split(',')[1];
-                            var blobinfo = blobCache.create(id, file, base64);
-                            blobCache.add(blobinfo);
-                            callback(blobinfo.blobUrl(), { title: file.name });
-                        };
-                    };
-                    input.click();
+            <!-- Summernote Lite CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+            
+            <!-- jQuery -->
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            
+            <!-- Summernote Lite JS -->
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+
+            <style>
+                .note-editable ul {
+                    list-style-type: disc; /* Untuk unordered list */
+                    margin-left: 20px; /* Memberi jarak */
                 }
-            });
-        </script>
+
+                .note-editable ol {
+                    list-style-type: decimal; /* Untuk ordered list */
+                    margin-left: 20px; /* Memberi jarak */
+                }
+
+                .note-editor .note-dropdown-menu {
+                    box-sizing: content-box;
+                }
+            </style>
+    
+            <!-- Inisialisasi Summernote Lite -->
+            <script>
+                $(document).ready(function () {
+                    $('#summernote').summernote({
+                        placeholder: 'Masukkan konten di sini...',
+                        tabsize: 2,
+                        height: 700, // Atur tinggi editor
+                        focus: true, // Fokus otomatis saat editor terbuka
+                        toolbar: [
+                            ['font', ['bold', 'underline', 'italic']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen', 'codeview', 'help']]
+
+                        ]
+                    });
+                });
+            </script>
         @endpush
     </x-slot>
 
@@ -68,7 +77,7 @@
 
                     <div class="mt-4">
                         <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                        <textarea name="content" id="editor" class="content mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                        <textarea name="content" id="summernote" class="content mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
                     </div>
 
                     <div class="mb-4">

@@ -17,18 +17,19 @@
             <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
 
             <style>
+                .note-editable ul,
+                .note-editable ol {
+                    color: #000 !important; /* Mengatur warna teks menjadi hitam */
+                    margin-left: 20px; /* Memberikan jarak */
+                }
+
                 .note-editable ul {
-    list-style-type: disc; /* Untuk unordered list */
-    margin-left: 20px; /* Memberi jarak */
-}
+                    list-style-type: disc !important; /* Untuk unordered list */
+                }
 
-.note-editable ol {
-    list-style-type: decimal; /* Untuk ordered list */
-    margin-left: 20px; /* Memberi jarak */
-}
-
-
-
+                .note-editable ol {
+                    list-style-type: decimal !important; /* Untuk ordered list */
+                }
             </style>
     
             <!-- Inisialisasi Summernote Lite -->
@@ -40,10 +41,13 @@
                         height: 700, // Atur tinggi editor
                         focus: true, // Fokus otomatis saat editor terbuka
                         toolbar: [
-                            ['font', ['bold', 'italic', 'underline']],
+                            ['font', ['bold', 'underline', 'italic']],
+                            ['color', ['color']],
                             ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
                             ['insert', ['link', 'picture', 'video']],
-                            ['view', ['fullscreen']]
+                            ['view', ['fullscreen', 'codeview', 'help']]
+
                         ]
                     });
                 });

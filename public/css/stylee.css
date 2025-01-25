@@ -825,7 +825,7 @@ ukm List Style
 
 /* 
 ---------------------------------------------
-Footer Style
+beritaslide Style
 --------------------------------------------- 
 */
 
@@ -888,7 +888,7 @@ Footer Style
   
   .news-imagebs img {
     width: 100%;
-    height: 200px;
+    max-height: 500px;
     object-fit: cover;
   }
   
