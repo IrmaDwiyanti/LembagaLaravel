@@ -1,159 +1,244 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UIN Sunan Gunung Djati Bandung</title>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Elsie&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
-    
-    <link rel="icon" href="images/logoset.png" type="image/png">
 
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <title>LP2M</title>
+  <link rel="icon" href="images/logoset.png" type="image/png">
+
+  <!-- Bootstrap core CSS -->
+{{--   <link href="vendorBoostrap/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ --}}  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="css/fontawesome.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/owl.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 </head>
+
 <body>
-  <!-- Navbar -->
-  @include('components.navbarview')
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <a class="logo">
+                      <img src="/images/logo.png" alt="Logo" class="logo-image">
+                      <h1>LP2M</h1>
+                    </a>
+                    <div class="service-hours">
+                        <span>{{__('message.jam')}}</span>
+                    </div>
+                    <ul class="nav">
+                      <li class="scroll-to-section"><a href="home" class="active">{{__('message.menu.homelang')}}</a></li>
+                      <li class="scroll-to-section"><a href="pusat">{{__('message.menu.pusatlang')}}</a></li>
+                      <li class="scroll-to-section"><a href="beritaslide">{{__('message.menu.beritalang')}}</a></li>
+                      <li class="scroll-to-section dropdown">
+                        <a href="#events">{{__('message.menu.fakultas')}} <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="https://fah.uinsgd.ac.id/">{{ __('message.fakultas.fah') }}</a></li>
+                          <li><a href="https://fdk.uinsgd.ac.id/">{{ __('message.fakultas.fdk') }}</a></li>
+                          <li><a href="https://febi.uinsgd.ac.id/">{{ __('message.fakultas.febi') }}</a></li>
+                          <li><a href="https://fisip.uinsgd.ac.id/">{{ __('message.fakultas.fisip') }}</a></li>
+                          <li><a href="https://psi.uinsgd.ac.id/">{{ __('message.fakultas.psi') }}</a></li>
+                          <li><a href="https://fst.uinsgd.ac.id/">{{ __('message.fakultas.fst') }}</a></li>
+                          <li><a href="https://fsh.uinsgd.ac.id/">{{ __('message.fakultas.fsh') }}</a></li>
+                          <li><a href="https://ftk.uinsgd.ac.id/">{{ __('message.fakultas.ftk') }}</a></li>
+                          <li><a href="https://fu.uinsgd.ac.id/">{{ __('message.fakultas.fu') }}</a></li>
+                        </ul>
+                      </li>
+                      
+                      <!-- Dropdown Pilihan Bahasa -->
+                      <li class="dropdown language-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          {{ app()->getLocale() == 'id' ? 'Bahasa' : (app()->getLocale() == 'en' ? 'English' : 'العربية') }}
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{{ route('langChange', ['lang' => 'id']) }}">Indonesia</a></li>
+                          <li><a href="{{ route('langChange', ['lang' => 'en']) }}">English</a></li>
+                          <li><a href="{{ route('langChange', ['lang' => 'ar']) }}">العربية</a></li>
+                        </ul>
+                      </li>
+                      
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+  <!-- ***** Header Area End ***** -->
 
+  <!--main banner start-->
+  <div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-carousel owl-banner">
+            <div class="item item-1">
+              <div class="header-text">
+                <span class="category">{{__('message.pusathome.puslitpenlang.tittle')}}</span>
+                <h2>{{__('message.pusathome.puslitpenlang.kepanjangan')}}</h2>
+                <p>{{__('message.descriptionbanner.despuslitpen')}}</p>
+                
+              </div>
+            </div>
+            <div class="item item-2">
+              <div class="header-text">
+                <span class="category">{{__('message.pusathome.pkmlang.tittle')}}</span>
+                <h2>{{__('message.pusathome.pkmlang.kepanjangan')}}</h2>
+                <p>{{__('message.descriptionbanner.despkm')}}</p>
+                
+              </div>
+            </div>
+            <div class="item item-3">
+              <div class="header-text">
+                <span class="category">{{__('message.pusathome.pgsalang.tittle')}}</span>
+                <h2>{{__('message.pusathome.pgsalang.kepanjangan')}}</h2>
+                <p>{{__('message.descriptionbanner.despgsa')}}</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Main banner end-->
 
-<!--hero-->
-  <section class="hero">
-    <img src="" alt="">
-    <div class="overlay"></div>
-    <div class="hero-content">
-        <h2>LEMBAGA PENELITIAN DAN</h2>
-        <h2>PENGABDIAN KEPADA</h2>
-        <h2>MASYARAKAT</h2>
+  <!--visi misi sejarah struktur start-->
+  <div class="services section" id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="/images/service-01.png" alt="online degrees">
+            </div>
+            <div class="main-content">
+              <h4>{{ __('message.services.visi_misi.title') }}</h4>
+              <p>{{ __('message.services.visi_misi.description') }}</p>
+              <div class="main-button">
+                <a href="visimisi">{{ __('message.services.button')}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="/images/service-02.png" alt="short courses">
+            </div>
+            <div class="main-content">
+              <h4>{{ __('message.services.sejarahlang.title') }}</h4>
+              <p>{{ __('message.services.sejarahlang.description') }}</p>
+              <div class="main-button">
+                <a href="sejarah">{{ __('message.services.button')}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="/images/service-03.png" alt="web experts">
+            </div>
+            <div class="main-content">
+              <h4>{{ __('message.services.strukturlang.title') }}</h4>
+              <p>{{ __('message.services.strukturlang.description') }}</p>
+              <div class="main-button">
+                <a href="struktur">{{ __('message.services.button')}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--visi misi sejarah struktur end-->
+
+  <!--pusat pusat lp2m start-->
+  <section class="pusathome">
+    <div class="contentpusat">
+      <h1>{{__('message.pusathome.tittle')}}</h1>
+      <p>{{__('message.pusathome.description')}}</p>
+    </div>
+    <div class="grid-container">
+      <a href="{{ url('puslitpen') }}" class="grid-item">
+        <img alt="Puslitpen" src="/images/1.jpeg" />
+        <p><strong>{{__('message.pusathome.puslitpenlang.tittle')}}</strong></p>
+        <p>{{__('message.pusathome.puslitpenlang.kepanjangan')}}</p>
+      </a>
+      <a href="{{ url('pkm') }}" class="grid-item">
+        <img alt="PKM" src="/images/2.jpg" />
+        <p><strong>{{__('message.pusathome.pkmlang.tittle')}}</strong></p>
+        <p>{{__('message.pusathome.pkmlang.kepanjangan')}}</p>
+      </a>
+      <a href="{{ url('pgsa') }}" class="grid-item">
+        <img alt="PGSA" src="/images/8.jpg" />
+        <p><strong>{{__('message.pusathome.pgsalang.tittle')}}</strong></p>
+        <p>{{__('message.pusathome.pgsalang.kepanjangan')}}</p>
+      </a>
     </div>
   </section>
+  <!--pusat lp2m end-->
 
-   <!--profile-->
-  <div class="container">
-    <div class="section">
-      <div class="card green-card">
-        <div class="card-icon">
-          <i class="fas fa-bullseye"></i>
-        </div>
-        <h3>VISI MISI &amp; TUJUAN</h3>
-        <p>"Penguatan Penelitian dan Pengabdian kepada Masyarakat" Mengelola lembaga secara profesional, 
-          transparan, dan akuntabel, Mengelola penelitian dengan memperhatikan peningkatan mutu,
-          perluasan diversifikasi pendekatan, dan penguatan signifikasi sosial hasil penelitian,
-          Mengelola pengabdian kepada masyarakat berbasis kompetensi, tematik, lintas sektoral, dan interdisipliner</p>
-            <a href="visimisi">Learn More</a>
-      </div>
-      <div class="card blue-card">
-        <div class="card-icon">
-          <i class="fas fa-book"></i>
-        </div>
-        <h3>SEJARAH</h3>
-        <p>LP2M didirikan berdasarkan Peraturan Menteri Agama Republik Indonesia Nomor 7 Tahun 2013 
-          Tentang Organisasi dan Tata Kerja (Ortaker) Universitas Islam Negeri (UIN) Sunan Gunung Djati 
-          (SGD) Bandung.Struktur LP2M terbagi menjadi tiga komponen, yaitu: Pusat Penelitian danPenerbitan; 
-          Pusat Pengabdian kepada Masyarakat; dan Pusat StudiGender dan Anak. Sebelum terhimpun dalam struktur LP2M, </p>
-        <a href="sejarah">Learn More</a>
-      </div>
-      <div class="card green-card">
-        <div class="card-icon">
-          <i class="fas fa-sitemap"></i>
-        </div>
-        <h3>STRUKTUR</h3>
-        <p>Pimpinan : Ketua Lembaga Penelitian dan Pengabdian Masyarakat (LP2M), Sekretaris LP2M, 
-          Kepala Pusat Pengabdian Kepada Masyarakat, Kepala Pusat Penelitian dan Penerbitan, 
-          Kepala Pusat Gender dan Anak. Tata usaha: Analis Keuangan LP2M, PRANATA KEUANGAN APBN PENYELIA 
-          TATA USAHA LP2M, OPERATOR LP2M, STAF HUMAS LP2M, STAF PKM LP2M, STAF PUSLITPEN LP2M, 
-          STAF ARSIPARIS LP2M</p>
-        <a href="struktur">Learn More</a>
-      </div>
-  </div>
-  </div>
-  <!--end profile-->
-
-  <!--pusat-->
-  <div class="pusat-section">
-    <h2>Pusat -Pusat</h2>
-    <a href="puslitpen">
-      <div class="pusat-cards">
-      <div class="pusat-card">
-       <img alt="Classroom with empty chairs and desks" src="https://storage.googleapis.com/a1aa/image/q1P43vupUnbJJZEyJEnJ0UlRec1LoXA9k3cIttC84tfAyNoTA.jpg" style="height: 200px; width: 240px; object-fit: cover;"/>
-       <h3>PUSLITPEN</h3>
-       <p>Pusat Penelitian dan Penerbitan</p>
-      </div>
-    </a>
-    
-    <a href="pkm">
-      <div class="pusat-card">
-        <img alt="Library center with bookshelves" src="https://storage.googleapis.com/a1aa/image/ablq5og3Uno9GVlrjrgzvHWYLf7OAy7nVtAt4YLlf8cCyNoTA.jpg" style="height: 200px; width: 240px; object-fit: cover;"/>
-        <h3>PKM</h3>
-        <p>Pusat Pengabdian Kepada Masyarakat</p>
-      </div>
-    </a>
-      
-    <a href="pgsa">
-      <div class="pusat-card">
-        <img alt="Computer lab with multiple monitors" src="https://storage.googleapis.com/a1aa/image/HcIACeAcKAW1JqquTCM7MDYc6ke9qgH1FMv0MR40LiqfjbQnA.jpg" style="height: 200px; width: 240px; object-fit: cover;"/>
-        <h3>PGSA</h3>
-        <p>Pusat Studi Gender dan Anak</p>
-       </div>
-    </a>
-      </div>
-    </div>
- </div>
-<!--end pusat-->
-  
-<!-- Berita -->
+<!-- Berita Terbaru Start -->
 <div class="containernews">
-  <!-- Video Section -->
-  <div class="sectionnews">
-    <h2>Campus Video</h2>
-    <hr />
-    <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/yprwfSH4h9c?si=u7luHMHU-PykvPo0" 
-              title="YouTube video player" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              allowfullscreen>
-      </iframe>
-    </div>
+  <div class="headernews">
+    <h1>{{__('message.beritaterbaru')}}</h1>
   </div>
-
-  <!-- Berita Terbaru -->
-  <div class="sectionnews">
-    <h2>Berita Terbaru</h2>
-    <hr />
+  <div class="news-container">
     @foreach ($berita_terbaru as $item)
-      <a href="{{ url('contentberita/' . $item->id . '/' . $item->slug) }}">
-        <div class="news-item">
-          @if ($item->image)
-            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" height="80" />
-          @else
-            <img src="{{ asset('images/default.jpg') }}" alt="Default Image" height="80" />
-          @endif
-          <div>
-            <div class="date">
-              {{ $item->date ? \Carbon\Carbon::parse($item->date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}
+    <div class="side-news">
+      <a href="{{ url('contentberita/' . $item->slug) }}">
+        <div class="side-news-item">
+          <img 
+            alt="{{ $item->title ?? 'Gambar tidak tersedia' }}" 
+            height="100" 
+            src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/default.jpg') }}" 
+            width="100" 
+          />
+          <div class="text">
+            <div class="title">
+              <a href="{{ url('contentberita/' . $item->slug) }}">
+                {{ $item->title ?? 'Judul tidak tersedia' }}
+              </a>
             </div>
-            <div class="title">{{ $item->title ?? 'Judul tidak tersedia' }}</div>
+            <div class="details">
+              {{ $item->date ? \Carbon\Carbon::parse($item->date)->format('d F Y') : 'Tanggal tidak tersedia' }} 
+              | By {{ $item->author ?? 'Penulis tidak diketahui' }}
+            </div>
           </div>
         </div>
       </a>
+    </div>
     @endforeach
     <a class="read-more" href="{{ url('beritaslide') }}">
-      Berita Selengkapnya
+      {{__('message.beritaselengkapnya')}}
       <i class="fas fa-arrow-right"></i>
     </a>
   </div>
 </div>
+<!--berita terbaru end-->
 
-<!-- Footer -->
+<!-- ***** Footer start ***** -->
 <footer class="footer">
   <div class="footer-left">
-    <img src="images/logo.png" alt="Logo UIN" />
+    <img src="/images/logo.png" alt="Logo UIN" />
   </div>
   <div class="footer-center">
     <p>Jl. A.H. Nasution No. 105, <br> Cibiru, Bandung 40614</p>
@@ -171,7 +256,16 @@
     <p>(022) 7800525</p>
   </div>
 </footer>
+ <!-- ***** Footer start End ***** -->
 
-<script src="{{ asset('js/script.js') }}"></script>
-</body>
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="vendorBoostrap/jquery/jquery.min.js"></script>
+<script src="vendorBoostrap/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/isotope.min.js"></script>
+<script src="/js/owl-carousel.js"></script>
+<script src="/js/counter.js"></script>
+<script src="/js/custom.js"></script>
+
+  </body>
 </html>

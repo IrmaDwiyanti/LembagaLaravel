@@ -1,100 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UIN Sunan Gunung Djati Bandung</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    <head>
 
-    <link rel="icon" href="images/logoset.png" type="image/png">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+        <title>{{__('message.pimpinan')}}</title>
+        <link rel="icon" href="images/logoset.png" type="image/png">
 
-    <link rel="stylesheet" href="css/style.css">
-</head>
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
+          
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="css/fontawesome.css">
+        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/owl.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+      </head>
 <body>
-    <!--header-->
-    <!-- Navbar -->
-  @include('components.navbarview')
-
-    <main class="contentstr">
-        <h1 class="title-sectionstr">PIMPINAN</h1>
-        
-        <section class="namestr">
-            <img src="https://placehold.co/100x150" alt="ketua" class="name-img">
-            <div class="name-infostr">
-                <h2>Ketua Lembaga Penelitian dan Pengabdian Masyarakat (LP2M)</h2>
-                <p>Dr. H. Setia Gumilar, S.Ag., M.Si.</p>
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <a class="logo">
+                      <img src="/images/logo.png" alt="Logo" class="logo-image">
+                      <h1>LP2M</h1>
+                    </a>
+                    <div class="service-hours">
+                        <span>{{__('message.jam')}}</span>
+                    </div>
+                    <ul class="nav">
+                      <li class="scroll-to-section"><a href="home">{{__('message.menu.homelang')}}</a></li>
+                      <li class="scroll-to-section"><a href="pusat">{{__('message.menu.pusatlang')}}</a></li>
+                      <li class="scroll-to-section"><a href="beritaslide">{{__('message.menu.beritalang')}}</a></li>
+                      <li class="scroll-to-section dropdown">
+                        <a href="#events">{{__('message.menu.fakultas')}} <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="https://fah.uinsgd.ac.id/">{{ __('message.fakultas.fah') }}</a></li>
+                          <li><a href="https://fdk.uinsgd.ac.id/">{{ __('message.fakultas.fdk') }}</a></li>
+                          <li><a href="https://febi.uinsgd.ac.id/">{{ __('message.fakultas.febi') }}</a></li>
+                          <li><a href="https://fisip.uinsgd.ac.id/">{{ __('message.fakultas.fisip') }}</a></li>
+                          <li><a href="https://psi.uinsgd.ac.id/">{{ __('message.fakultas.psi') }}</a></li>
+                          <li><a href="https://fst.uinsgd.ac.id/">{{ __('message.fakultas.fst') }}</a></li>
+                          <li><a href="https://fsh.uinsgd.ac.id/">{{ __('message.fakultas.fsh') }}</a></li>
+                          <li><a href="https://ftk.uinsgd.ac.id/">{{ __('message.fakultas.ftk') }}</a></li>
+                          <li><a href="https://fu.uinsgd.ac.id/">{{ __('message.fakultas.fu') }}</a></li>
+                        </ul>
+                      </li>
+                      
+                      <!-- Dropdown Pilihan Bahasa -->
+                      <li class="dropdown language-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          {{ app()->getLocale() == 'id' ? 'Bahasa' : (app()->getLocale() == 'en' ? 'English' : 'العربية') }}
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{{ route('langChange', ['lang' => 'id']) }}">Indonesia</a></li>
+                          <li><a href="{{ route('langChange', ['lang' => 'en']) }}">English</a></li>
+                          <li><a href="{{ route('langChange', ['lang' => 'ar']) }}">العربية</a></li>
+                        </ul>
+                      </li>
+                      
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                </nav>
             </div>
-        </section>
-        
-        <section class="namestr">
-            <img src="https://placehold.co/100x150" alt="struktur" class="name-img">
-            <div class="name-infostr">
-                <h2>Sekretaris LP2M</h2>
-                <p>Dr. H. Sarbini, M.Ag</p>
-            </div>
-        </section>
-
-        <section class="namestr">
-            <img src="https://placehold.co/100x150" alt="struktur" class="name-img">
-            <div class="name-infostr">
-                <h2>Kepala Pusat Pengabdian Kepada Masyarakat</h2>
-                <p>Dr. H. Aep Kusnawan, M.Ag</p>
-            </div>
-        </section>
-        
-        <section class="namestr">
-            <img src="https://placehold.co/100x150" alt="struktur" class="name-img">
-            <div class="name-infostr">
-                <h2>Kepala Pusat Penelitian dan Penerbitan</h2>
-                <p>Dr. H. Deni Miharja, M.Ag</p>
-            </div>
-        </section>
-
-        <section class="namestr">
-            <img src="https://placehold.co/100x150" alt="struktur" class="name-img">
-            <div class="name-infostr">
-                <h2>Kepala Pusat Gender dan Anak</h2>
-                <p>Irma Riyani, Ph.D.</p>
-            </div>
-        </section>
-        
-        <div class="linksstr">
-            <h5>Lihat Lainnya:</h5>
-            <a href="struktur2">Tata Usaha</a>
         </div>
-    </main>
+    </div>
+</header>
+  <!-- ***** Header Area End ***** -->
+
+<!-- ***** Struktur start ***** -->
+<section class="struktur-section">
+    <h1 class="title-sectionstr">{{__('message.pimpinan')}}</h1>
+    <div class="struktur-list">
+        <div class="namestr">
+            <img src="/images/profile.png" alt="Ketua Lembaga Penelitian dan Pengabdian Masyarakat (LP2M)" class="name-img">
+            <div class="name-infostr">
+                <h2>Dr. H. Setia Gumilar, S.Ag., M.Si.</h2>
+                <p>{{ __('message.ketua') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="Sekretaris LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Dr. H. Sarbini, M.Ag</h2>
+                <p>{{ __('message.sekretaris') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="Kepala Pusat Pengabdian Kepada Masyarakat" class="name-img">
+            <div class="name-infostr">
+                <h2>Dr. H. Aep Kusnawan, M.Ag</h2>
+                <p>{{ __('message.kepala_pusat_pengabdian') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="Kepala Pusat Penelitian dan Penerbitan" class="name-img">
+            <div class="name-infostr">
+                <h2>Dr. H. Deni Miharja, M.Ag</h2>
+                <p>{{ __('message.kepala_pusat_penelitian') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="Kepala Pusat Gender dan Anak" class="name-img">
+            <div class="name-infostr">
+                <h2>Irma Riyani, Ph.D.</h2>
+                <p>{{ __('message.kepala_pusat_gender') }}</p>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="title-sectionstr">{{ __('message.tata_usaha') }}</h1>
+
+    <div class="struktur-list">
+        <div class="namestr">
+            <img src="/images/profile.png" alt="Analis Keuangan LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Deni Wahyu Ramdhani, S.Pd.I</h2>
+                <p>{{ __('message.analis_keuangan') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="PRANATA KEUANGAN APBN PENYELIA TATA USAHA LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Desi Mulyani, SE.</h2>
+                <p>{{ __('message.pranata_keuangan') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="OPERATOR LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Gilang Aditya Purba, ST.</h2>
+                <p>{{ __('message.operator_lp2m') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="STAF HUMAS LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Asep Hilmi, S.Sos.</h2>
+                <p>{{ __('message.staf_humas') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="STAF PKM LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Khoirul Aziz, S.Sy</h2>
+                <p>{{ __('message.staf_pkm') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="STAF PUSLITPEN LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Abdul Wasik.,S.Ag.,M.Ag</h2>
+                <p>{{ __('message.staf_puslitpen') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="STAF ARSIPARIS LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Zaenal Muttaqin</h2>
+                <p>{{ __('message.staf_arsiparis') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="STAF PERENCANAAN LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Linda Fu'adah, SE.</h2>
+                <p>{{ __('message.staf_perencanaan') }}</p>
+            </div>
+        </div>
+
+        <div class="namestr">
+            <img src="/images/profile.png" alt="STAF PSGA LP2M" class="name-img">
+            <div class="name-infostr">
+                <h2>Nurlina, S.Ag.</h2>
+                <p>{{ __('message.staf_psga') }}</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- ***** Struktur end ***** -->
 
     
-  <!--footer-->
-  <footer class="footer">
+ <!-- ***** Footer start ***** -->
+ <footer class="footer">
     <div class="footer-left">
-        <img src="images/logo.png" alt="Logo UIN">
+      <img src="/images/logo.png" alt="Logo UIN" />
     </div>
-
     <div class="footer-center">
-        <p>Jl. A.H. Nasution No. 105, <br> Cibiru, Bandung 40614</p>
-        <p class="footer-copyright">&copy; 2024 - UIN SGD Bandung</p>
+      <p>Jl. A.H. Nasution No. 105, <br> Cibiru, Bandung 40614</p>
+      <p class="footer-copyright">&copy; 2024 - UIN SGD Bandung</p>
     </div>
-  
     <div class="footer-right">
-        <p class="footer-about">Sosial Media</p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p>Email: <a>lp2m@uinsgd.ac.id</a></p>
-        <p>(022)7800525</p>
+      <p class="footer-about">Sosial Media</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>Email: <a href="mailto:lp2m@uinsgd.ac.id">lp2m@uinsgd.ac.id</a></p>
+      <p>(022) 7800525</p>
     </div>
-</footer>
-
-<script src="{{ asset('js/script.js') }}"></script>
-
+  </footer>
+   <!-- ***** Footer start End ***** -->
+ 
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendorBoostrap/jquery/jquery.min.js"></script>
+  <script src="vendorBoostrap/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/isotope.min.js"></script>
+  <script src="/js/owl-carousel.js"></script>
+  <script src="/js/counter.js"></script>
+  <script src="/js/custom.js"></script>
 </body>
 </html>

@@ -7,11 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\BeritaTranslation;
 
 
 class BeritaController extends Controller
 {
     public function index() {
+        $locale = app()->getLocale();
+
         // Jika pengguna adalah admin, ambil semua berita
         if (Auth::user()->roles == '1') {
             $berita = Berita::orderBy('date', 'desc')
@@ -92,6 +95,7 @@ class BeritaController extends Controller
             'date' => 'required|date',
             'content' => 'required',
             'status' => 'required|in:0,1',
+            'locale' => 'required',
         ]);
     
         // Proses gambar utama (jika ada)
@@ -139,14 +143,21 @@ class BeritaController extends Controller
         $description = $dom->saveHTML();
     
         // Simpan data ke database
-        Berita::create([
+        $berita = Berita::create([
             'title' => $request->title,
             'author' => $request->author,
             'date' => $request->date,
-            'content' => $description,
+            'content' => $request->content,
             'image' => $path,
             'status' => $request->status,
             'user_id' => Auth::id(),
+        ]);
+    
+        // Simpan terjemahan berita
+        $berita->translations()->create([
+            'locale' => $request->locale,
+            'title' => $request->title,
+            'content' => $request->content,
         ]);
     
         return redirect()->route('dashboard.berita.index')->with('success', 'Berita berhasil ditambahkan.');
@@ -165,6 +176,7 @@ class BeritaController extends Controller
             'content' => 'required|string',
             'status' => 'required|in:0,1',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'locale' => 'required',
         ]);
     
         // Update data berita
@@ -254,6 +266,21 @@ class BeritaController extends Controller
         // Simpan perubahan ke database
         $berita->save();
     
+        // Update terjemahan berita
+        $translation = $berita->translations()->where('locale', $request->locale)->first();
+        if ($translation) {
+            $translation->update([
+                'title' => $request->title,
+                'content' => $request->content,
+            ]);
+        } else {
+            $berita->translations()->create([
+                'locale' => $request->locale,
+                'title' => $request->title,
+                'content' => $request->content,
+                'date' => $request->date,
+            ]);
+        }
         return redirect()->route('dashboard.berita.index')->with('success', 'Berita berhasil diperbarui.');
     }
     

@@ -44,6 +44,17 @@ class Berita extends Model
         'status' => '0', 
     ];
 
+    public function translations()
+    {
+        return $this->hasMany(BeritaTranslation::class, 'berita_id');
+    }
+    
 
+    public function getTranslatedAttribute($field)
+    {
+    $translation = $this->translations->where('locale', app()->getLocale())->first();
+    return $translation ? $translation->$field : $this->$field;
+    }
+    
     
 }

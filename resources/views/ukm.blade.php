@@ -16,7 +16,7 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="css/fontawesome.css">
-    <link rel="stylesheet" href="css/stylee.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/owl.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
@@ -24,18 +24,6 @@
 
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
@@ -43,25 +31,18 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
                     <a class="logo">
                       <img src="/images/logo.png" alt="Logo" class="logo-image">
                       <h1>LP2M</h1>
                   </a>
-                  
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Serach Start ***** -->
-                    <div class="service-hours">
+                  <div class="service-hours">
                       <span>Jam layanan: 07.00 - 15.00</span>
                   </div>
-                  
-                    <!-- ***** Serach Start ***** -->
-                    <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li class="scroll-to-section"><a href="#top">Home</a></li>
-                      <li class="scroll-to-section"><a href="#services">Pusat</a></li>
-                      <li class="scroll-to-section"><a href="#courses" class="active">UKM</a></li>
-                      <li class="scroll-to-section"><a href="#team">Berita</a></li>
+                      <li class="scroll-to-section"><a href="home">Home</a></li>
+                      <li class="scroll-to-section"><a href="pusat">Pusat</a></li>
+                      <li class="scroll-to-section"><a href="ukm" class="active">UKM</a></li>
+                      <li class="scroll-to-section"><a href="beritaslide" >Berita</a></li>
                       <li class="scroll-to-section dropdown">
                         <a href="#events">Fakultas-fakultas <i class="fa fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
@@ -76,11 +57,10 @@
                           <li><a href="https://fu.uinsgd.ac.id/">Ushuluddin</a></li>
                         </ul>
                       </li>
-                                        </ul>   
+                    </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
-                    <!-- ***** Menu End ***** -->
                 </nav>
             </div>
         </div>

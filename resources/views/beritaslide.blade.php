@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    <title>Pusat - pusat</title>
+    <title>{{__('message.tittleberitaslide')}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendorBoostrap/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -16,27 +16,13 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="css/fontawesome.css">
-    <link rel="stylesheet" href="css/stylee.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/owl.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
   </head>
 
 <body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <div class="container">
@@ -46,30 +32,42 @@
                     <a class="logo">
                       <img src="/images/logo.png" alt="Logo" class="logo-image">
                       <h1>LP2M</h1>
-                  </a>
-                  <div class="service-hours">
-                      <span>Jam layanan: 07.00 - 15.00</span>
-                  </div>
+                    </a>
+                    <div class="service-hours">
+                        <span>{{__('message.jam')}}</span>
+                    </div>
                     <ul class="nav">
-                      <li class="scroll-to-section"><a href="#top">Home</a></li>
-                      <li class="scroll-to-section"><a href="#services">Pusat</a></li>
-                      <li class="scroll-to-section"><a href="#courses">UKM</a></li>
-                      <li class="scroll-to-section"><a href="#team" class="active">Berita</a></li>
+                      <li class="scroll-to-section"><a href="home">{{__('message.menu.homelang')}}</a></li>
+                      <li class="scroll-to-section"><a href="pusat">{{__('message.menu.pusatlang')}}</a></li>
+                      <li class="scroll-to-section"><a href="beritaslide" class="active">{{__('message.menu.beritalang')}}</a></li>
                       <li class="scroll-to-section dropdown">
-                        <a href="#events">Fakultas-fakultas <i class="fa fa-chevron-down"></i></a>
+                        <a href="#events">{{__('message.menu.fakultas')}} <i class="fa fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                          <li><a href="https://fah.uinsgd.ac.id/">Adab dan Humaniora</a></li>
-                          <li><a href="https://fdk.uinsgd.ac.id/">Dakwah dan Komunikasi</a></li>
-                          <li><a href="https://febi.uinsgd.ac.id/">Ekonomi dan Bisnis Islam</a></li>
-                          <li><a href="https://fisip.uinsgd.ac.id/">Ilmu Sosial dan Ilmu Politik</a></li>
-                          <li><a href="https://psi.uinsgd.ac.id/">Psikologi</a></li>
-                          <li><a href="https://fst.uinsgd.ac.id/">Sains dan Teknologi</a></li>
-                          <li><a href="https://fsh.uinsgd.ac.id/">Syariah dan Hukum</a></li>
-                          <li><a href="https://ftk.uinsgd.ac.id/">Tarbiyah dan Keguruan</a></li>
-                          <li><a href="https://fu.uinsgd.ac.id/">Ushuluddin</a></li>
+                          <li><a href="https://fah.uinsgd.ac.id/">{{ __('message.fakultas.fah') }}</a></li>
+                          <li><a href="https://fdk.uinsgd.ac.id/">{{ __('message.fakultas.fdk') }}</a></li>
+                          <li><a href="https://febi.uinsgd.ac.id/">{{ __('message.fakultas.febi') }}</a></li>
+                          <li><a href="https://fisip.uinsgd.ac.id/">{{ __('message.fakultas.fisip') }}</a></li>
+                          <li><a href="https://psi.uinsgd.ac.id/">{{ __('message.fakultas.psi') }}</a></li>
+                          <li><a href="https://fst.uinsgd.ac.id/">{{ __('message.fakultas.fst') }}</a></li>
+                          <li><a href="https://fsh.uinsgd.ac.id/">{{ __('message.fakultas.fsh') }}</a></li>
+                          <li><a href="https://ftk.uinsgd.ac.id/">{{ __('message.fakultas.ftk') }}</a></li>
+                          <li><a href="https://fu.uinsgd.ac.id/">{{ __('message.fakultas.fu') }}</a></li>
                         </ul>
                       </li>
-                    </ul>   
+                      
+                      <!-- Dropdown Pilihan Bahasa -->
+                      <li class="dropdown language-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          {{ app()->getLocale() == 'id' ? 'Bahasa' : (app()->getLocale() == 'en' ? 'English' : 'العربية') }}
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{{ route('langChange', ['lang' => 'id']) }}">Indonesia</a></li>
+                          <li><a href="{{ route('langChange', ['lang' => 'en']) }}">English</a></li>
+                          <li><a href="{{ route('langChange', ['lang' => 'ar']) }}">العربية</a></li>
+                        </ul>
+                      </li>
+                      
+                    </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
@@ -77,13 +75,13 @@
             </div>
         </div>
     </div>
-  </header>
+</header>
   <!-- ***** Header Area End ***** -->
 
 <!-- ***** Berita Terbaru ***** -->
 <section class="containerbs">
     <div class="judulbs text-center mb-4">
-      <h2>Berita-Berita</h2>
+      <h2>{{__('message.tittleberitaslide')}}</h2>
     </div>
     <div class="news-gridbs">
         @foreach ($berita_terbaru as $item)

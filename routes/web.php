@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\LangController;
 
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
@@ -122,7 +124,14 @@ Route::get('contentberita/{slug?}', [BeritaController::class, 'contentberita'])-
 
 Route::post('/uploadImage', [BeritaController::class, 'uploadImage'])->name('uploadImage');
 
+/* Route::get('locale/change/{locale}', function ($locale) {
+    session()->put('locale', $locale);
 
+    return back();
+})->name('locale.change');
+ */
+
+Route::get('langChange', [LangController::class, 'langChange'])->name(('langChange'));
 
 
 require __DIR__.'/auth.php';
